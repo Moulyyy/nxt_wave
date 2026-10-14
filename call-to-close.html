@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Call-to-Close RL Sales Engine | NIAT Admissions Co-Pilot</title>
+    <meta name="description" content="AI Sales Co-Pilot for NIAT Admissions: Sequential Agentic Intelligence & Reinforcement Learning Contextual Bandit Loop.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="call-to-close.css">
+</head>
+<body>
+    <!-- Ambient Background Glow -->
+    <div class="bg-ambient">
+        <div class="ambient-orb orb-1"></div>
+        <div class="ambient-orb orb-2"></div>
+        <div class="ambient-orb orb-3"></div>
+    </div>
+
+    <!-- App Header -->
+    <header class="app-header">
+        <div class="brand-wrapper">
+            <div class="brand-logo">⚡</div>
+            <div>
+                <h1 class="brand-title">Call-to-Close <span>RL Engine</span></h1>
+                <p class="brand-tagline">Track B • Autonomous Lead-to-Sale Conversion</p>
+            </div>
+        </div>
+
+        <!-- Telemetry Summary Badges -->
+        <div class="header-metrics">
+            <div class="metric-pill">
+                <span class="metric-icon">📈</span>
+                <span class="metric-text"><strong>+22.4%</strong> Conversion Lift</span>
+            </div>
+            <div class="metric-pill">
+                <span class="metric-icon">⚡</span>
+                <span class="metric-text"><strong>2.4 min</strong> Prep Latency</span>
+            </div>
+            <div class="metric-pill" id="aiStatusPill">
+                <span class="live-dot pulse"></span>
+                <span class="metric-text" id="aiStatusText">Gemini Multimodal Active</span>
+            </div>
+            <div class="metric-pill" id="telegramStatusPill" style="cursor: pointer;" title="Configure Telegram Bot">
+                <span class="live-dot" id="tgLiveDot"></span>
+                <span class="metric-text" id="tgStatusText">Telegram: Setup</span>
+            </div>
+        </div>
+
+        <!-- Navigation Actions -->
+        <nav class="nav-actions">
+            <a href="call-to-close.html" class="nav-link active-tab">Track B: Sales Co-Pilot</a>
+            <a href="index.html" class="nav-link">Track A: Career DNA</a>
+        </nav>
+    </header>
+
+    <!-- Main Workspace -->
+    <main class="main-wrapper">
+        <!-- Alert Notification Bar -->
+        <div class="alert-banner" id="alertBanner">
+            <div class="alert-content">
+                <span class="alert-icon">🔥</span>
+                <span id="alertMessageText">New Golden Script Promoted! Angle A just closed a Telugu parent with a High-Fee objection.</span>
+            </div>
+            <button class="alert-close" onclick="document.getElementById('alertBanner').classList.remove('active')">&times;</button>
+        </div>
+
+        <!-- 2-Column High-Clarity Workspace Grid -->
+        <div class="workspace-grid">
+            
+            <!-- LEFT COLUMN: Intake & Call Audio -->
+            <section class="panel panel-left">
+                <div class="panel-header">
+                    <div class="panel-title-group">
+                        <span class="panel-icon">🎙️</span>
+                        <div>
+                            <h2 class="panel-title">Parent Call Intake</h2>
+                            <p class="panel-desc">Speaker diarized recording & live transcription</p>
+                        </div>
+                    </div>
+                    <button class="btn-secondary-action" id="btnOpenIngestModal" title="Ingest custom call or record via microphone">
+                        <span>➕ Custom Call / Mic</span>
+                    </button>
+                </div>
+
+                <!-- Audio Testing & Upload Utility Bar -->
+                <div class="audio-action-bar">
+                    <button type="button" class="btn-audio-util" id="btnOpenDownloadModal" title="Download genuine sample voice recordings for testing">
+                        <span>⬇️ Download Sample Audio</span>
+                    </button>
+                    <button type="button" class="btn-audio-util btn-upload-util" id="btnUploadAudioTrigger" title="Upload your voice recording (.wav, .mp3, .m4a)">
+                        <span>📤 Upload Voice (.wav/.mp3)</span>
+                    </button>
+                    <input type="file" id="audioFileInput" accept="audio/*,.wav,.mp3,.m4a,.webm,.ogg" style="display: none;">
+                </div>
+
+                <!-- Upload In-Progress State -->
+                <div class="upload-progress-card" id="uploadProgressCard" style="display: none;">
+                    <div class="upload-progress-header">
+                        <span class="spinner-sm"></span>
+                        <span id="uploadProgressText">Uploading & transcribing audio with Gemini Multimodal AI...</span>
+                    </div>
+                    <div class="progress-bar-bg"><div class="progress-bar-fill" id="uploadProgressBar"></div></div>
+                </div>
+
+                <!-- Call Selector & Lead Metadata -->
+                <div class="lead-selector-card">
+                    <label class="field-label" for="callSelector">Active Call Recording</label>
+                    <select id="callSelector" class="call-dropdown" aria-label="Select call recording">
+                        <!-- Populated by JS -->
+                    </select>
+                    
+                    <div class="lead-meta-strip">
+                        <div class="meta-tag" id="leadCityTag">📍 Tirupati, AP</div>
+                        <div class="meta-tag" id="leadLangTag">🌐 Telugu + English</div>
+                        <div class="meta-tag" id="leadPersonaTag">👨‍💼 Govt Employee Father</div>
+                    </div>
+                </div>
+
+                <!-- Audio Waveform Player -->
+                <div class="audio-player-card">
+                    <div class="audio-main-row">
+                        <button class="btn-play-circle" id="btnPlayAudio" aria-label="Play audio">▶</button>
+                        <div class="audio-info">
+                            <div class="audio-title" id="audioName">Sample Parent Call #1</div>
+                            <div class="audio-timestamp" id="audioDuration">00:00 / 01:24</div>
+                        </div>
+                    </div>
+                    <div class="waveform-container" id="waveformContainer">
+                        <!-- Animated Waveform Bars populated by JS -->
+                    </div>
+                </div>
+
+                <!-- Diarized Transcript Reader -->
+                <div class="transcript-section">
+                    <div class="section-subhead">
+                        <span>Speaker Diarized Transcript</span>
+                        <span class="transcript-badge">Code-Mixed ASR</span>
+                    </div>
+                    <div class="transcript-scroll" id="transcriptContainer">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <!-- Primary Action CTA -->
+                <button class="btn-primary-cta" id="btnRunAgent">
+                    <span class="btn-icon">⚡</span>
+                    <span class="btn-label" id="btnAgentLabel">Run AI Intelligence & Generate Pitch</span>
+                </button>
+            </section>
+
+            <!-- RIGHT COLUMN: Actionable Sales Co-Pilot -->
+            <section class="panel panel-right">
+                
+                <!-- Sleek Segmented Switcher -->
+                <div class="segmented-control">
+                    <button class="segment-btn active" data-view="view-battlecard">
+                        <span>👔 Counsellor Battlecard</span>
+                    </button>
+                    <button class="segment-btn" data-view="view-parent-note">
+                        <span>📱 Parent WhatsApp Note</span>
+                    </button>
+                    <button class="segment-btn" data-view="view-strategy-rl">
+                        <span>🤖 RL Bandit & Analytics</span>
+                    </button>
+                    <button class="segment-btn" data-view="view-faq-rag">
+                        <span>📚 Grounded FAQ RAG</span>
+                    </button>
+                </div>
+
+                <!-- TAB 1: Counsellor Battlecard -->
+                <div class="tab-view active" id="view-battlecard">
+                    <div class="battlecard-container">
+                        
+                        <!-- Deal-Killing Hesitation Banner -->
+                        <div class="objection-alert-card">
+                            <div class="objection-pill-label">Primary Deal-Killing Hesitation</div>
+                            <h3 class="objection-title" id="bcPrimaryFear">
+                                250% Fee Premium vs Direct Convenor Quota at Mohan Babu University
+                            </h3>
+                            <div class="policy-indicator">
+                                <span class="policy-star">★</span>
+                                <span id="bcPolicyBadge">Angle A: Financial Stipend Offset (47.6% Win Rate • Golden Template)</span>
+                            </div>
+                        </div>
+
+                        <!-- Competitor Reality vs NIAT Proof Quick Contrast -->
+                        <div class="contrast-grid">
+                            <div class="contrast-card competitor-card">
+                                <div class="contrast-header">
+                                    <span class="contrast-dot dot-red"></span>
+                                    <span>Mentioned Competitor Reality</span>
+                                </div>
+                                <div class="contrast-body">
+                                    <div class="contrast-college" id="bcCompName">Mohan Babu University (Direct Quota)</div>
+                                    <div class="contrast-metrics">
+                                        <div class="metric-row"><span>Direct 4-Yr Fee:</span> <strong id="bcCompFee">₹3.5 Lakhs</strong></div>
+                                        <div class="metric-row"><span>Placement Rate:</span> <strong id="bcCompPlacement">38% (Mass IT)</strong></div>
+                                        <div class="metric-row"><span>Avg Package:</span> <strong id="bcCompAvg">₹3.8 LPA</strong></div>
+                                        <div class="metric-row"><span>Syllabus Age:</span> <strong id="bcCompSyllabus">2021 (No GenAI)</strong></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="contrast-card niat-card">
+                                <div class="contrast-header">
+                                    <span class="contrast-dot dot-green"></span>
+                                    <span>NIAT Verified Proof Points</span>
+                                </div>
+                                <div class="contrast-body">
+                                    <div class="contrast-college">NIAT Industry Program + UGC Degree</div>
+                                    <div class="contrast-metrics">
+                                        <div class="metric-row"><span>Paid Stipend Track:</span> <strong id="bcNiatStipend">₹15k–₹25k/mo</strong></div>
+                                        <div class="metric-row"><span>Fee Offset:</span> <strong id="bcNiatOffset">Recovers ₹3.5L–₹4.5L</strong></div>
+                                        <div class="metric-row"><span>Placement Avg:</span> <strong id="bcNiatAvg">₹9.2 LPA Target</strong></div>
+                                        <div class="metric-row"><span>District Anchor:</span> <strong id="bcNiatAlumni">Srikanth Naidu (₹14.2 LPA)</strong></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 3 Sequential Talking Points -->
+                        <div class="battlecard-box">
+                            <div class="box-title">3 Grounded Pitch Bullets (Call #2 Script)</div>
+                            <ol class="pitch-bullets-list" id="bcBulletsList">
+                                <li class="pitch-bullet">Acknowledge empathy first: Confirm you understand their budget comparison with direct state quota.</li>
+                                <li class="pitch-bullet">Drop the stipend offset counter: Explain how Year-2/3 paid apprenticeships recover ₹3.5L–₹4.5L before graduation.</li>
+                                <li class="pitch-bullet">Cite local alumni anchor: Point to Srikanth Naidu from Tirupati placed at ₹14.2 LPA at a Bangalore AI startup.</li>
+                            </ol>
+                        </div>
+
+                        <!-- Verbatim Spoken Closing Script -->
+                        <div class="verbatim-card">
+                            <div class="verbatim-top">
+                                <span class="verbatim-label">Verbatim Spoken Closing Pitch</span>
+                                <div style="display: flex; gap: 8px;">
+                                    <button class="btn-copy-chip" id="btnExportBattlecard" title="Export battlecard as markdown file">
+                                        <span>📄 Export Dossier</span>
+                                    </button>
+                                    <button class="btn-copy-chip" id="btnCopyScript" title="Copy closing script">
+                                        <span>📋 Copy Script</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <blockquote class="verbatim-quote" id="bcVerbatimScript">
+                                "Sir, on paper it looks like 250% higher, but here is the exact financial math: In regular colleges, students spend 4 years paying fees with zero income and emerge with an average ₹3.5 LPA TCS/Infosys job. In NIAT, starting from 2nd year semester 2, students enter mandatory paid apprenticeships earning ₹15,000 to ₹25,000 monthly. That recovers ₹3.5L to ₹4.5L of the fees before graduation. The ₹8L difference is repaid within the first 11 months of working."
+                            </blockquote>
+                        </div>
+
+                        <!-- Call #2 Outcome Logger (RL Feedback Trigger) -->
+                        <div class="outcome-bar">
+                            <div class="outcome-label">
+                                <span>Log Call #2 Outcome to Train RL Policy:</span>
+                            </div>
+                            <div class="outcome-actions">
+                                <button class="btn-reward-win" id="btnRewardWon">
+                                    <span>🎉 Seat Fee Paid (+1)</span>
+                                </button>
+                                <button class="btn-reward-stall" id="btnRewardStalled">
+                                    <span>⚠️ Stalled / Ghosted (0)</span>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- TAB 2: Parent WhatsApp Note -->
+                <div class="tab-view" id="view-parent-note">
+                    <div class="whatsapp-container">
+                        <div class="whatsapp-mockup">
+                            
+                            <!-- WhatsApp Header -->
+                            <div class="wa-header">
+                                <div class="wa-avatar">N</div>
+                                <div class="wa-details">
+                                    <div class="wa-name" id="wpParentName">Ravi Kumar (Parent)</div>
+                                    <div class="wa-sub">NIAT Official Admissions • Verified Business</div>
+                                </div>
+                                <span class="wa-lang-tag" id="wpLangTag">Telugu</span>
+                            </div>
+
+                            <!-- WhatsApp Message Bubble -->
+                            <div class="wa-body">
+                                <div class="wa-bubble">
+                                    <div class="wa-text" id="wpMessageBody">
+                                        నమస్కారం రవి గారు 🙏
+
+మోహన్ బాబు యూనివర్సిటీలో NIAT ప్రోగ్రామ్ ఫీజు గురించి మీరు అడిగిన ముఖ్యమైన ప్రశ్నకు ధన్యవాదాలు. ఒక మధ్యతరగతి కుటుంబంగా మీ ఆలోచన 100% సరైనది.
+
+ముఖ్యమైన వ్యత్యాసం:
+1. సాధారణ B.Tech లో 4 ఏళ్ల పాటు ఎటువంటి ఆదాయం ఉండదు (సగటు ప్యాకేజీ ₹3.5 లక్షలు).
+2. NIAT లో 2వ సంవత్సరం నుండి విద్యార్థులకు నెలకు ₹15,000 - ₹25,000 వరకు పెయిడ్ ఇంటర్న్‌షిప్ స్టైపెండ్ లభిస్తుంది (కోర్సు సమయంలోనే ₹3.5L–₹4.5L రికవరీ అవుతుంది).
+3. మీ తిరుపతికి చెందిన విద్యార్థి శ్రీకాంత్ నాయుడు ఇక్కడే ప్రాజెక్ట్స్ పూర్తి చేసి బెంగళూరు AI స్టార్టప్‌లో ₹14.2 LPA ప్యాకేజీతో ప్లేస్ అయ్యారు.
+
+పూర్తి సిలబస్ మరియు రుజువులు ఇక్కడ చూడండి: https://niatindia.com/tirupati-proof
+                                    </div>
+                                    <div class="wa-time">11:42 AM ✓✓</div>
+                                </div>
+                            </div>
+
+                            <!-- WhatsApp Action Toolbar -->
+                            <div class="wa-footer">
+                                <div class="wa-footer-left">
+                                    <span class="wa-note-summary" id="wpMessageSummary">Telugu clarity note addressing fee ROI with Tirupati alumni proof.</span>
+                                </div>
+                                <div class="wa-footer-actions">
+                                    <button class="btn-copy-chip" id="btnCopyWhatsAppNote">
+                                        <span>📋 Copy Note</span>
+                                    </button>
+                                    <button class="btn-whatsapp-dispatch" id="btnApproveDispatch">
+                                        <span>🚀 Approve & Dispatch via WhatsApp MCP</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 3: RL Bandit & Strategy Engine -->
+                <div class="tab-view" id="view-strategy-rl">
+                    <div class="rl-dashboard">
+                        
+                        <!-- Top Header with Telemetry button -->
+                        <div class="rl-header">
+                            <div>
+                                <h3 class="rl-title">Contextual Bandit Strategy Matrix</h3>
+                                <p class="rl-desc">Dynamic exploration vs exploitation across objection-handling policies</p>
+                            </div>
+                            <button class="btn-telemetry-pill" id="btnOpenTelemetryModal">
+                                <span>🔍 View Sequential Tool JSON</span>
+                            </button>
+                        </div>
+
+                        <!-- Policy Table -->
+                        <div class="policy-card">
+                            <table class="clean-table">
+                                <thead>
+                                    <tr>
+                                        <th>Strategy Angle</th>
+                                        <th>Objection Focus</th>
+                                        <th>Uses</th>
+                                        <th>Won</th>
+                                        <th>Win Rate</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="policyTableBody">
+                                    <!-- Populated by JS -->
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Objection Distribution Heatmap -->
+                        <div class="heatmap-card">
+                            <div class="heatmap-title">Deal-Killing Friction Heatmap (Across 1,200+ Admissions Calls)</div>
+                            
+                            <div class="heatmap-rows">
+                                <div class="h-row">
+                                    <div class="h-label">
+                                        <span>250% Fee Premium vs Tier-3</span>
+                                        <strong>44% of calls</strong>
+                                    </div>
+                                    <div class="h-bar-bg"><div class="h-bar-fill fill-amber" style="width: 44%;"></div></div>
+                                </div>
+
+                                <div class="h-row">
+                                    <div class="h-label">
+                                        <span>No Graduated Batches Yet</span>
+                                        <strong>28% of calls</strong>
+                                    </div>
+                                    <div class="h-bar-bg"><div class="h-bar-fill fill-rose" style="width: 28%;"></div></div>
+                                </div>
+
+                                <div class="h-row">
+                                    <div class="h-label">
+                                        <span>UGC Degree Legitimacy & Govt Exams</span>
+                                        <strong>18% of calls</strong>
+                                    </div>
+                                    <div class="h-bar-bg"><div class="h-bar-fill fill-indigo" style="width: 18%;"></div></div>
+                                </div>
+
+                                <div class="h-row">
+                                    <div class="h-label">
+                                        <span>Scaler / Newton Residential Comparison</span>
+                                        <strong>10% of calls</strong>
+                                    </div>
+                                    <div class="h-bar-bg"><div class="h-bar-fill fill-cyan" style="width: 10%;"></div></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- TAB 4: Grounded FAQ RAG Assistant (For Students & Parents) -->
+                <div class="tab-view" id="view-faq-rag">
+                    <div class="faq-rag-container">
+                        <div class="faq-ask-card">
+                            <div class="section-subhead" style="margin-bottom: 10px;">
+                                <span>NIAT Grounded Knowledge & FAQ RAG Assistant</span>
+                                <span class="transcript-badge">Verified Citations</span>
+                            </div>
+                            
+                            <div class="faq-controls-row">
+                                <select id="faqAudience" class="faq-select" aria-label="Audience target">
+                                    <option value="parent">Target: Parent (ROI, Safety & UGC Degree)</option>
+                                    <option value="student">Target: Student (Curriculum, AI & Projects)</option>
+                                    <option value="both">Target: Both Student & Parent</option>
+                                </select>
+                                <select id="faqLanguage" class="faq-select" aria-label="Response Language">
+                                    <option value="English">Language: English</option>
+                                    <option value="Telugu">Language: Telugu (తెలుగు)</option>
+                                    <option value="Hindi">Language: Hindi (हिंदी)</option>
+                                    <option value="Tamil">Language: Tamil (தமிழ்)</option>
+                                    <option value="Kannada">Language: Kannada (ಕನ್ನಡ)</option>
+                                </select>
+                            </div>
+
+                            <div class="faq-input-group">
+                                <input type="text" id="faqQueryInput" class="faq-input" placeholder="Ask any question regarding NIAT (fees, UGC validity, stipends, projects, placements)...">
+                                <button type="button" class="btn-faq-ask" id="btnAskFaq">
+                                    <span>⚡ Ask AI</span>
+                                </button>
+                            </div>
+
+                            <div class="faq-chips-row">
+                                <button type="button" class="faq-chip" onclick="setFaqQuery('Is NIAT a real engineering degree or just a coaching certificate?')">Degree Validity & UPSC</button>
+                                <button type="button" class="faq-chip" onclick="setFaqQuery('Why is NIAT fee ₹10L-₹14L when convenor quota is ₹3.5L?')">Fee ROI & ₹25k Stipends</button>
+                                <button type="button" class="faq-chip" onclick="setFaqQuery('Has any batch graduated from NIAT yet? How can we trust it?')">NxtWave 2,500+ Placed Proof</button>
+                                <button type="button" class="faq-chip" onclick="setFaqQuery('What does a student actually build in NIAT compared to regular colleges?')">12 Capstone Projects</button>
+                                <button type="button" class="faq-chip" onclick="setFaqQuery('What are the hostel, safety, and campus facilities like?')">Hostel & Safety</button>
+                            </div>
+                        </div>
+
+                        <!-- FAQ Response Result -->
+                        <div class="faq-result-card" id="faqResultCard" style="display: none;">
+                            <div class="faq-result-header">
+                                <div class="faq-badge-rag">
+                                    <span>🛡️ Grounded Verified Answer</span>
+                                </div>
+                                <span style="font-size: 0.72rem; color: var(--text-dim);" id="faqSourceModel">Gemini AI Grounded</span>
+                            </div>
+                            <div class="faq-answer-text" id="faqAnswerText"></div>
+                            <div class="faq-citations-box">
+                                <div class="faq-citations-title">Verified Proof Citations & External Links:</div>
+                                <div class="citation-links-list" id="faqCitationsList"></div>
+                            </div>
+                        </div>
+
+                        <!-- Grounded Corpus Cards -->
+                        <div class="policy-card" style="padding: 14px;">
+                            <div class="section-subhead" style="margin-bottom: 8px;">
+                                <span>Grounded Knowledge Base (7 Verified Pillars)</span>
+                                <span class="transcript-badge">Audited Facts</span>
+                            </div>
+                            <div id="faqCorpusList" style="display: flex; flex-direction: column; gap: 8px;">
+                                <!-- Populated by JS -->
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </section>
+        </div>
+
+        <!-- External Inputs & Outputs Integration Hub -->
+        <div class="external-io-bar">
+            <span><strong>External I/O Hub:</strong> Multi-Channel Connected Architecture</span>
+            <div class="io-channel-tags">
+                <span class="io-tag active">🎙️ Live Mic STT</span>
+                <span class="io-tag active">📁 Audio Upload (.wav)</span>
+                <span class="io-tag active" id="ioTagTelegram">🤖 Telegram Sales Bot</span>
+                <span class="io-tag active">💬 Parent WhatsApp Cloud API</span>
+                <span class="io-tag active">📄 Markdown Dossier Export</span>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal 1: Ingest Custom Call / Live Mic STT -->
+    <div class="modal-backdrop" id="modalIngestCall">
+        <div class="modal-card">
+            <div class="modal-header">
+                <div>
+                    <h3 class="modal-title"><span>🎙️</span> Ingest Call / Live Mic Recording</h3>
+                    <p class="modal-sub">Analyze real parent-counsellor calls with live Gemini AI speech intelligence</p>
+                </div>
+                <button class="modal-close-btn" id="btnCloseIngestModal">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <!-- Quick Preset Selectors -->
+                <div class="presets-bar">
+                    <span class="preset-label">⚡ Quick Presets:</span>
+                    <button type="button" class="preset-chip" onclick="loadIngestPreset('fee')">250% Fee Concern</button>
+                    <button type="button" class="preset-chip" onclick="loadIngestPreset('batch')">Batch Track Record</button>
+                    <button type="button" class="preset-chip" onclick="loadIngestPreset('ugc')">UGC Degree Doubt</button>
+                </div>
+
+                <div class="modal-form-grid">
+                    <div class="form-group">
+                        <label class="field-label" for="inpLeadName">Parent / Lead Name</label>
+                        <input type="text" id="inpLeadName" class="form-input" placeholder="e.g. S. Venkat Rao (Father of Tarun)">
+                    </div>
+                    <div class="form-group">
+                        <label class="field-label" for="inpStudentCity">Student Home City</label>
+                        <input type="text" id="inpStudentCity" class="form-input" placeholder="e.g. Warangal, Telangana">
+                    </div>
+                </div>
+
+                <div class="modal-form-grid">
+                    <div class="form-group">
+                        <label class="field-label" for="inpLanguage">Spoken Language / Code-Mix</label>
+                        <select id="inpLanguage" class="form-input">
+                            <option value="Telugu + English (Telugish)">Telugu + English (Telugish)</option>
+                            <option value="Hindi + English (Hinglish)">Hindi + English (Hinglish)</option>
+                            <option value="Tamil + English (Tanglish)">Tamil + English (Tanglish)</option>
+                            <option value="Kannada + English">Kannada + English</option>
+                            <option value="Indian English">Indian English</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="field-label" for="inpObjection">Primary Deal-Killing Friction</label>
+                        <select id="inpObjection" class="form-input">
+                            <option value="fee_premium_250">250% Fee Premium vs Tier-3 / Local State Quota</option>
+                            <option value="no_graduated_batch">No Graduated Batches Yet / Brand Safety</option>
+                            <option value="degree_validity">UGC Degree Legitimacy & Govt Exams (UPSC/GATE)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Live Mic Recording Bar -->
+                <div class="mic-panel">
+                    <button type="button" class="btn-mic-record" id="btnToggleMic">
+                        <span id="micIcon">🎙️</span>
+                        <span id="micBtnText">Record Speech (Live Web Speech STT)</span>
+                    </button>
+                    <span class="mic-status" id="micStatusLabel">Microphone ready (Click to speak)</span>
+                    <div class="mic-anim-wave" id="micWaveAnim" style="display: none;">
+                        <span></span><span></span><span></span><span></span>
+                    </div>
+                </div>
+
+                <!-- Transcript Input Area -->
+                <div class="form-group" style="margin-top: 14px;">
+                    <label class="field-label" for="inpTranscript">Diarized Transcript / Live Speech Buffer</label>
+                    <textarea id="inpTranscript" class="form-textarea" rows="4" placeholder="Counsellor: Namaskaram sir, Akhil NAT score bagundi...&#10;Parent: Madam fee chala high undi local college tho polisthe..."></textarea>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn-cancel" id="btnCancelIngest">Cancel</button>
+                <button type="button" class="btn-submit" id="btnSubmitIngest">
+                    <span>⚡ Ingest & Analyze with Gemini</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 2: Download Sample Voice Recordings -->
+    <div class="modal-backdrop" id="modalDownloadSamples">
+        <div class="modal-card">
+            <div class="modal-header">
+                <div>
+                    <h3 class="modal-title"><span>⬇️</span> Download Sample Voice Recordings</h3>
+                    <p class="modal-sub">Real audio recordings of parent-counsellor calls for testing offline or upload</p>
+                </div>
+                <button class="modal-close-btn" id="btnCloseDownloadModal">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 14px;">
+                    Download any of these pre-synthesized parent call audio files to your computer, then use the <strong>Upload Voice</strong> button to test Gemini's live speech-to-text diarization and sales pitch generation.
+                </p>
+
+                <div class="samples-grid" id="sampleFilesContainer">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn-cancel" id="btnCloseDownloadModalBtn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 3: Telegram Bot Integration & Config -->
+    <div class="modal-backdrop" id="modalTelegramConfig">
+        <div class="modal-card">
+            <div class="modal-header">
+                <div>
+                    <h3 class="modal-title"><span>🤖</span> Telegram Bot Integration (Counsellor & Parent Hub)</h3>
+                    <p class="modal-sub">Connect your Telegram bot to receive real-time battlecards and answer parent FAQs</p>
+                </div>
+                <button class="modal-close-btn" id="btnCloseTelegramModal">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <div class="tg-guide-box">
+                    <strong>⚡ How to get a Telegram Bot Token in 30 Seconds:</strong>
+                    <ol>
+                        <li>Open Telegram and search for <code>@BotFather</code>.</li>
+                        <li>Send <code>/newbot</code>, choose a display name and username (e.g. <code>my_niat_bot</code>).</li>
+                        <li>Copy the HTTP API token string provided and paste it below.</li>
+                    </ol>
+                </div>
+
+                <div class="form-group">
+                    <label class="field-label" for="inpTelegramToken">Telegram Bot Token</label>
+                    <input type="text" id="inpTelegramToken" class="form-input" placeholder="e.g. 1234567890:ABCdefGHIjklMNOpqrsTUVwxyz">
+                </div>
+
+                <div style="display: flex; gap: 8px; margin-top: 10px;">
+                    <button type="button" class="btn-submit" id="btnConnectTelegram" style="flex: 1;">
+                        <span>🚀 Connect & Activate Bot</span>
+                    </button>
+                </div>
+
+                <div class="form-group" style="margin-top: 16px;">
+                    <label class="field-label" for="inpTelegramChatId">Send Test Notification (Optional)</label>
+                    <div style="display: flex; gap: 8px;">
+                        <input type="text" id="inpTelegramChatId" class="form-input" placeholder="Your Telegram Chat ID (e.g. 12345678)">
+                        <button type="button" class="btn-secondary-action" id="btnSendTgTest" style="white-space: nowrap;">
+                            <span>Send Test</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="tg-command-cheat">
+                    <div class="tg-cmd-item">
+                        <code>/battlecard</code> — Push latest Call #2 pitch
+                    </div>
+                    <div class="tg-cmd-item">
+                        <code>/faq [query]</code> — Grounded RAG answer
+                    </div>
+                    <div class="tg-cmd-item">
+                        <code>/win [id]</code> — Log sale (+1 Reward)
+                    </div>
+                    <div class="tg-cmd-item">
+                        <code>🎙️ Send Voice</code> — Direct audio analysis
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn-cancel" id="btnCloseTelegramModalBtn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 4: Sequential Agentic Tool Telemetry Inspector -->
+    <div class="modal-backdrop" id="modalTelemetryInspector">
+        <div class="modal-card modal-card-wide">
+            <div class="modal-header">
+                <div>
+                    <h3 class="modal-title"><span>🔍</span> Sequential Agentic Search Telemetry & MCP Traces</h3>
+                    <p class="modal-sub">Live audit log of autonomous sequential tool execution, scraped facts, and MCP payloads</p>
+                </div>
+                <button class="modal-close-btn" id="btnCloseTelemetryModal">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <div class="telemetry-tabs">
+                    <button class="telem-tab active" data-target="telem-tool1">Stage 1: extract_call_state</button>
+                    <button class="telem-tab" data-target="telem-tool2">Stage 2: search_competitor_reality</button>
+                    <button class="telem-tab" data-target="telem-tool3">Stage 3: fetch_niat_curriculum_proof</button>
+                    <button class="telem-tab" data-target="telem-mcp">Dual WhatsApp MCP Payload</button>
+                </div>
+
+                <div class="telemetry-content">
+                    <div class="telem-pane active" id="telem-tool1">
+                        <div class="telem-meta-bar">
+                            <span><strong>Tool:</strong> extract_call_state(transcript)</span>
+                            <span><strong>Engine:</strong> Gemini Multimodal AI</span>
+                            <span><strong>Latency:</strong> 480ms</span>
+                        </div>
+                        <pre class="telem-json-box" id="jsonTool1">Loading telemetry...</pre>
+                    </div>
+
+                    <div class="telem-pane" id="telem-tool2">
+                        <div class="telem-meta-bar">
+                            <span><strong>Tool:</strong> search_competitor_reality(competitor_name)</span>
+                            <span><strong>Source:</strong> Grounded Competitor Database / Web Search</span>
+                            <span><strong>Latency:</strong> 790ms</span>
+                        </div>
+                        <pre class="telem-json-box" id="jsonTool2">Loading telemetry...</pre>
+                    </div>
+
+                    <div class="telem-pane" id="telem-tool3">
+                        <div class="telem-meta-bar">
+                            <span><strong>Tool:</strong> fetch_niat_curriculum_proof(objection, interest)</span>
+                            <span><strong>Source:</strong> NIAT Grounded Curriculum RAG</span>
+                            <span><strong>Latency:</strong> 390ms</span>
+                        </div>
+                        <pre class="telem-json-box" id="jsonTool3">Loading telemetry...</pre>
+                    </div>
+
+                    <div class="telem-pane" id="telem-mcp">
+                        <div class="telem-meta-bar">
+                            <span><strong>MCP Tool:</strong> send_dual_whatsapp_sync(counsellor_id, lead_id)</span>
+                            <span><strong>Protocol:</strong> Model Context Protocol (MCP) via HTTP/SSE</span>
+                            <span><strong>Status:</strong> Validated Schema (200 OK)</span>
+                        </div>
+                        <pre class="telem-json-box" id="jsonMcp">Loading telemetry...</pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn-cancel" id="btnCloseTelemetry">Close</button>
+                <button type="button" class="btn-copy-chip" id="btnCopyTelemetry">
+                    <span>📋 Copy Active JSON</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="call-to-close.js"></script>
+</body>
+</html>

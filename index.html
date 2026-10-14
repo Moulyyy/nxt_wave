@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career DNA by NIAT | Discover Your Tech Career Path</title>
+    <meta name="description" content="Free AI-powered career assessment for 12th-grade students. Get your personalized Career DNA report in 2 minutes. Available in Hindi, Telugu, Tamil, Kannada & Malayalam.">
+    <meta property="og:title" content="Career DNA by NIAT | What's Your Tech Career Path?">
+    <meta property="og:description" content="I just discovered my Career DNA! 🧬 Find out which tech career is perfect for you in 2 minutes.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-grid"></div>
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+    <div class="bg-glow bg-glow-3"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-brand">
+            <div class="dna-icon">🧬</div>
+            <span class="brand-text">Career<span class="brand-highlight">DNA</span></span>
+            <span class="brand-badge">by NIAT</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px;">
+            <a href="call-to-close.html" style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.25), rgba(168, 85, 247, 0.25)); border: 1px solid rgba(99, 102, 241, 0.4); color: #c7d2fe; text-decoration: none; padding: 6px 14px; border-radius: 9999px; font-size: 0.8rem; font-weight: 700; display: flex; align-items: center; gap: 6px; transition: all 0.2s ease;">
+                <span>⚡ Track B: Call-to-Close RL Sales Engine</span>
+                <span style="font-size: 0.75rem;">→</span>
+            </a>
+            <div class="nav-lang">
+                <select id="languageSelector" class="lang-select" aria-label="Select Language">
+                    <option value="en">English</option>
+                    <option value="hi">हिंदी</option>
+                    <option value="te">తెలుగు</option>
+                    <option value="ta">தமிழ்</option>
+                    <option value="kn">ಕನ್ನಡ</option>
+                    <option value="ml">മലയാളം</option>
+                </select>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main App Container -->
+    <main class="app-container">
+        
+        <!-- Screen 1: Hero / Landing -->
+        <section class="screen screen-hero active" id="screen-hero">
+            <div class="hero-content">
+                <div class="hero-badge" data-i18n="hero_badge">🎯 FREE AI Career Assessment</div>
+                <h1 class="hero-title">
+                    <span data-i18n="hero_title_1">Discover Your</span><br>
+                    <span class="gradient-text" data-i18n="hero_title_2">Career DNA</span>
+                </h1>
+                <p class="hero-subtitle" data-i18n="hero_subtitle">AI-powered career mapping for 12th-grade students. Get your personalized tech career path in 2 minutes.</p>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number" id="liveCounter">47,832</div>
+                        <div class="stat-label" data-i18n="stat_assessments">Assessments Taken</div>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <div class="stat-number">5</div>
+                        <div class="stat-label" data-i18n="stat_languages">Languages</div>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <div class="stat-number">2 min</div>
+                        <div class="stat-label" data-i18n="stat_time">Time to Complete</div>
+                    </div>
+                </div>
+
+                <button class="btn-primary btn-hero" id="btnStart" data-i18n="btn_start">
+                    Start My Career DNA Assessment →
+                </button>
+                <p class="hero-trust" data-i18n="hero_trust">Powered by AI • Trusted by 35+ Universities • 100% Free</p>
+            </div>
+
+            <div class="hero-visual">
+                <div class="dna-helix-container">
+                    <div class="dna-strand"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Screen 2: Assessment Form -->
+        <section class="screen screen-assessment" id="screen-assessment">
+            <div class="assessment-container">
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="progressBar"></div>
+                    <span class="progress-text" id="progressText">Step 1 of 4</span>
+                </div>
+
+                <!-- Step 1: Basic Info -->
+                <div class="step active" id="step-1">
+                    <h2 class="step-title" data-i18n="step1_title">📝 Let's start with the basics</h2>
+                    <div class="form-group">
+                        <label data-i18n="label_name">Your Name</label>
+                        <input type="text" id="userName" class="form-input" placeholder="Enter your name" data-i18n-placeholder="placeholder_name">
+                    </div>
+                    <div class="form-group">
+                        <label data-i18n="label_phone">WhatsApp Number</label>
+                        <div class="phone-input-group">
+                            <span class="phone-prefix">+91</span>
+                            <input type="tel" id="userPhone" class="form-input" placeholder="9876543210" maxlength="10">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label data-i18n="label_state">State</label>
+                        <select id="userState" class="form-input">
+                            <option value="" data-i18n="placeholder_state">Select your state</option>
+                            <option value="AP">Andhra Pradesh</option>
+                            <option value="TS">Telangana</option>
+                            <option value="TN">Tamil Nadu</option>
+                            <option value="KA">Karnataka</option>
+                            <option value="KL">Kerala</option>
+                            <option value="MH">Maharashtra</option>
+                            <option value="DL">Delhi</option>
+                            <option value="UP">Uttar Pradesh</option>
+                            <option value="RJ">Rajasthan</option>
+                            <option value="GJ">Gujarat</option>
+                            <option value="WB">West Bengal</option>
+                            <option value="BR">Bihar</option>
+                            <option value="MP">Madhya Pradesh</option>
+                            <option value="HR">Haryana</option>
+                            <option value="PB">Punjab</option>
+                            <option value="OD">Odisha</option>
+                            <option value="JH">Jharkhand</option>
+                            <option value="CG">Chhattisgarh</option>
+                            <option value="OTHER">Other</option>
+                        </select>
+                    </div>
+                    <button class="btn-primary btn-next" onclick="nextStep(2)" data-i18n="btn_next">Continue →</button>
+                </div>
+
+                <!-- Step 2: Academics -->
+                <div class="step" id="step-2">
+                    <h2 class="step-title" data-i18n="step2_title">📊 Your Academic Profile</h2>
+                    <div class="form-group">
+                        <label data-i18n="label_board">Board / Stream</label>
+                        <select id="userBoard" class="form-input">
+                            <option value="">Select your board</option>
+                            <option value="CBSE">CBSE</option>
+                            <option value="ICSE">ICSE / ISC</option>
+                            <option value="AP_STATE">AP State Board</option>
+                            <option value="TS_STATE">Telangana State Board</option>
+                            <option value="TN_STATE">Tamil Nadu State Board</option>
+                            <option value="KA_STATE">Karnataka State Board</option>
+                            <option value="KL_STATE">Kerala State Board</option>
+                            <option value="MH_STATE">Maharashtra State Board</option>
+                            <option value="OTHER">Other State Board</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label data-i18n="label_stream">Stream</label>
+                        <div class="chip-group" id="streamChips">
+                            <button class="chip" data-value="MPC" onclick="selectChip(this, 'stream')">🔬 MPC (Maths, Physics, Chemistry)</button>
+                            <button class="chip" data-value="BiPC" onclick="selectChip(this, 'stream')">🧬 BiPC (Biology, Physics, Chemistry)</button>
+                            <button class="chip" data-value="Commerce" onclick="selectChip(this, 'stream')">📈 Commerce</button>
+                            <button class="chip" data-value="Arts" onclick="selectChip(this, 'stream')">🎨 Arts / Humanities</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label data-i18n="label_percentage">12th Percentage / CGPA</label>
+                        <input type="number" id="userPercentage" class="form-input" placeholder="e.g. 78.5" min="30" max="100" step="0.1">
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn-secondary" onclick="prevStep(1)" data-i18n="btn_back">← Back</button>
+                        <button class="btn-primary btn-next" onclick="nextStep(3)" data-i18n="btn_next">Continue →</button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Interest Discovery -->
+                <div class="step" id="step-3">
+                    <h2 class="step-title" data-i18n="step3_title">🧠 What excites you?</h2>
+                    <p class="step-desc" data-i18n="step3_desc">Pick 2-3 things that genuinely interest you. No wrong answers.</p>
+                    <div class="interest-grid" id="interestGrid">
+                        <button class="interest-card" data-value="building_apps" onclick="toggleInterest(this)">
+                            <span class="interest-icon">📱</span>
+                            <span class="interest-label" data-i18n="interest_apps">Building Apps</span>
+                        </button>
+                        <button class="interest-card" data-value="ai_robots" onclick="toggleInterest(this)">
+                            <span class="interest-icon">🤖</span>
+                            <span class="interest-label" data-i18n="interest_ai">AI & Robots</span>
+                        </button>
+                        <button class="interest-card" data-value="data_numbers" onclick="toggleInterest(this)">
+                            <span class="interest-icon">📊</span>
+                            <span class="interest-label" data-i18n="interest_data">Data & Numbers</span>
+                        </button>
+                        <button class="interest-card" data-value="design_creative" onclick="toggleInterest(this)">
+                            <span class="interest-icon">🎨</span>
+                            <span class="interest-label" data-i18n="interest_design">Design & Creative</span>
+                        </button>
+                        <button class="interest-card" data-value="gaming" onclick="toggleInterest(this)">
+                            <span class="interest-icon">🎮</span>
+                            <span class="interest-label" data-i18n="interest_gaming">Gaming</span>
+                        </button>
+                        <button class="interest-card" data-value="cybersecurity" onclick="toggleInterest(this)">
+                            <span class="interest-icon">🔒</span>
+                            <span class="interest-label" data-i18n="interest_security">Cybersecurity</span>
+                        </button>
+                        <button class="interest-card" data-value="business" onclick="toggleInterest(this)">
+                            <span class="interest-icon">💼</span>
+                            <span class="interest-label" data-i18n="interest_business">Business & Startups</span>
+                        </button>
+                        <button class="interest-card" data-value="cloud_devops" onclick="toggleInterest(this)">
+                            <span class="interest-icon">☁️</span>
+                            <span class="interest-label" data-i18n="interest_cloud">Cloud & DevOps</span>
+                        </button>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn-secondary" onclick="prevStep(2)" data-i18n="btn_back">← Back</button>
+                        <button class="btn-primary btn-next" onclick="nextStep(4)" data-i18n="btn_next">Continue →</button>
+                    </div>
+                </div>
+
+                <!-- Step 4: Personality Quick Fire -->
+                <div class="step" id="step-4">
+                    <h2 class="step-title" data-i18n="step4_title">⚡ Quick-fire Personality Round</h2>
+                    <p class="step-desc" data-i18n="step4_desc">Pick the option that feels more natural to you.</p>
+                    
+                    <div class="personality-questions">
+                        <div class="pq-item">
+                            <span class="pq-label" data-i18n="pq1_label">I prefer to...</span>
+                            <div class="pq-options">
+                                <button class="pq-btn" data-q="workstyle" data-value="solo" onclick="selectPQ(this)" data-i18n="pq1_a">Work alone, deep focus</button>
+                                <button class="pq-btn" data-q="workstyle" data-value="team" onclick="selectPQ(this)" data-i18n="pq1_b">Collaborate with a team</button>
+                            </div>
+                        </div>
+                        <div class="pq-item">
+                            <span class="pq-label" data-i18n="pq2_label">I'm more excited by...</span>
+                            <div class="pq-options">
+                                <button class="pq-btn" data-q="motivation" data-value="create" onclick="selectPQ(this)" data-i18n="pq2_a">Creating something new</button>
+                                <button class="pq-btn" data-q="motivation" data-value="optimize" onclick="selectPQ(this)" data-i18n="pq2_b">Making things work better</button>
+                            </div>
+                        </div>
+                        <div class="pq-item">
+                            <span class="pq-label" data-i18n="pq3_label">When solving a problem, I usually...</span>
+                            <div class="pq-options">
+                                <button class="pq-btn" data-q="approach" data-value="logical" onclick="selectPQ(this)" data-i18n="pq3_a">Analyze data & logic</button>
+                                <button class="pq-btn" data-q="approach" data-value="intuitive" onclick="selectPQ(this)" data-i18n="pq3_b">Go with my gut feeling</button>
+                            </div>
+                        </div>
+                        <div class="pq-item">
+                            <span class="pq-label" data-i18n="pq4_label">My dream salary expectation (per year)...</span>
+                            <div class="pq-options">
+                                <button class="pq-btn" data-q="ambition" data-value="stable" onclick="selectPQ(this)" data-i18n="pq4_a">₹5-10 LPA (stable job)</button>
+                                <button class="pq-btn" data-q="ambition" data-value="high" onclick="selectPQ(this)" data-i18n="pq4_b">₹15-30+ LPA (dream big)</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="btn-group">
+                        <button class="btn-secondary" onclick="prevStep(3)" data-i18n="btn_back">← Back</button>
+                        <button class="btn-primary btn-generate" id="btnGenerate" onclick="generateCareerDNA()" data-i18n="btn_generate">🧬 Generate My Career DNA →</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Screen 3: AI Processing -->
+        <section class="screen screen-processing" id="screen-processing">
+            <div class="processing-container">
+                <div class="dna-loader">
+                    <div class="dna-bar"></div>
+                    <div class="dna-bar"></div>
+                    <div class="dna-bar"></div>
+                    <div class="dna-bar"></div>
+                    <div class="dna-bar"></div>
+                </div>
+                <h2 class="processing-title" data-i18n="processing_title">Analyzing Your Career DNA...</h2>
+                <div class="processing-steps">
+                    <div class="proc-step" id="proc-1">
+                        <span class="proc-icon">⏳</span>
+                        <span data-i18n="proc_1">Mapping your interests to career paths...</span>
+                    </div>
+                    <div class="proc-step" id="proc-2">
+                        <span class="proc-icon">⏳</span>
+                        <span data-i18n="proc_2">Analyzing salary trajectories...</span>
+                    </div>
+                    <div class="proc-step" id="proc-3">
+                        <span class="proc-icon">⏳</span>
+                        <span data-i18n="proc_3">Finding your best-fit NIAT campus...</span>
+                    </div>
+                    <div class="proc-step" id="proc-4">
+                        <span class="proc-icon">⏳</span>
+                        <span data-i18n="proc_4">Generating personalized report...</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Screen 4: Results / Career DNA Report -->
+        <section class="screen screen-results" id="screen-results">
+            <div class="results-container">
+                
+                <!-- Shareable Card -->
+                <div class="career-card" id="careerCard">
+                    <div class="card-header">
+                        <div class="card-brand">🧬 Career DNA Report</div>
+                        <div class="card-name" id="resultName"></div>
+                    </div>
+                    <div class="card-body">
+                        <div class="career-badge" id="careerBadge"></div>
+                        <h2 class="career-title" id="careerTitle"></h2>
+                        <p class="career-desc" id="careerDesc"></p>
+                        
+                        <div class="career-metrics">
+                            <div class="metric">
+                                <div class="metric-label" data-i18n="metric_match">Career Match</div>
+                                <div class="metric-bar">
+                                    <div class="metric-fill" id="matchFill"></div>
+                                </div>
+                                <div class="metric-value" id="matchValue"></div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-label" data-i18n="metric_demand">Market Demand</div>
+                                <div class="metric-bar">
+                                    <div class="metric-fill demand-fill" id="demandFill"></div>
+                                </div>
+                                <div class="metric-value" id="demandValue"></div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-label" data-i18n="metric_growth">Growth Potential</div>
+                                <div class="metric-bar">
+                                    <div class="metric-fill growth-fill" id="growthFill"></div>
+                                </div>
+                                <div class="metric-value" id="growthValue"></div>
+                            </div>
+                        </div>
+
+                        <div class="salary-trajectory">
+                            <h3 data-i18n="salary_title">💰 Expected Salary Trajectory</h3>
+                            <div class="salary-chart" id="salaryChart"></div>
+                        </div>
+
+                        <div class="skills-section">
+                            <h3 data-i18n="skills_title">🛠️ Skills You'll Master</h3>
+                            <div class="skills-tags" id="skillsTags"></div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="card-watermark">careerdna.niatindia.com</div>
+                    </div>
+                </div>
+
+                <!-- AI Insight -->
+                <div class="ai-insight-box" id="aiInsightBox">
+                    <div class="ai-insight-header">
+                        <span>🤖</span>
+                        <span data-i18n="ai_insight_title">AI Career Insight</span>
+                    </div>
+                    <p class="ai-insight-text" id="aiInsightText"></p>
+                </div>
+
+                <!-- NIAT Recommendation -->
+                <div class="niat-recommendation" id="niatRecommendation">
+                    <div class="niat-rec-header">
+                        <h3 data-i18n="niat_rec_title">🎓 Your Best-Fit NIAT Campus</h3>
+                    </div>
+                    <div class="niat-campus-card" id="niatCampusCard">
+                        <div class="campus-name" id="campusName"></div>
+                        <div class="campus-location" id="campusLocation"></div>
+                        <div class="campus-highlights" id="campusHighlights"></div>
+                    </div>
+                    <a href="https://apply.niatindia.com" target="_blank" class="btn-primary btn-niat" id="btnApplyNAT" data-i18n="btn_nat">
+                        🚀 Register for FREE NAT Scholarship Test
+                    </a>
+                    <p class="niat-urgency" data-i18n="niat_urgency">⏰ Limited seats available for 2026-27 batch. NAT registration closes soon.</p>
+                </div>
+
+                <!-- Share Section -->
+                <div class="share-section">
+                    <h3 data-i18n="share_title">📤 Share Your Career DNA</h3>
+                    <div class="share-buttons">
+                        <button class="share-btn share-whatsapp" id="btnShareWhatsApp" onclick="shareWhatsApp()">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                            WhatsApp
+                        </button>
+                        <button class="share-btn share-instagram" id="btnShareInstagram" onclick="shareInstagram()">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                            Instagram Story
+                        </button>
+                        <button class="share-btn share-copy" id="btnCopyLink" onclick="copyShareLink()">
+                            📋 Copy Link
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Restart -->
+                <button class="btn-secondary btn-restart" onclick="restartAssessment()" data-i18n="btn_restart">Take Assessment Again</button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Admin Dashboard Toggle -->
+    <button class="admin-toggle" id="adminToggle" onclick="toggleDashboard()">📊</button>
+
+    <!-- Dashboard Overlay -->
+    <div class="dashboard-overlay" id="dashboardOverlay">
+        <div class="dashboard-container">
+            <div class="dashboard-header">
+                <h2>📊 Career DNA — Lead Dashboard</h2>
+                <button class="dashboard-close" onclick="toggleDashboard()">✕</button>
+            </div>
+            <div class="dashboard-stats">
+                <div class="dash-stat">
+                    <div class="dash-stat-value" id="dashTotalLeads">0</div>
+                    <div class="dash-stat-label">Total Leads</div>
+                </div>
+                <div class="dash-stat">
+                    <div class="dash-stat-value" id="dashTodayLeads">0</div>
+                    <div class="dash-stat-label">Today</div>
+                </div>
+                <div class="dash-stat">
+                    <div class="dash-stat-value" id="dashConversionRate">0%</div>
+                    <div class="dash-stat-label">NAT Click Rate</div>
+                </div>
+                <div class="dash-stat">
+                    <div class="dash-stat-value" id="dashShareRate">0%</div>
+                    <div class="dash-stat-label">Share Rate</div>
+                </div>
+            </div>
+            <div class="dashboard-filters">
+                <select id="dashFilterState" class="form-input" onchange="filterDashboard()">
+                    <option value="all">All States</option>
+                </select>
+                <select id="dashFilterCareer" class="form-input" onchange="filterDashboard()">
+                    <option value="all">All Careers</option>
+                </select>
+                <button class="btn-secondary" onclick="exportLeads()">📥 Export CSV</button>
+            </div>
+            <div class="dashboard-table-container">
+                <table class="dashboard-table" id="dashboardTable">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Phone</th>
+                            <th>State</th>
+                            <th>Career Match</th>
+                            <th>Match %</th>
+                            <th>NAT Click</th>
+                            <th>Shared</th>
+                            <th>Language</th>
+                            <th>Time</th>
+                        </tr>
+                    </thead>
+                    <tbody id="dashboardTableBody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="i18n.js"></script>
+    <script src="career-engine.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
