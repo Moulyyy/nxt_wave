@@ -1,7 +1,7 @@
 ================================================================================
 3-MINUTE VIDEO WALKTHROUGH SCRIPT (LOOM / UNLISTED YOUTUBE)
 System: End-to-End NIAT Growth Flywheel (Track A + Track B)
-Target Duration: 2:40 – 2:50 (Hard Limit: Under 3:00)
+Target Duration: 2:45 – 2:55 (Hard Limit: Under 3:00)
 Live App Links: 
   - Track A (Top-of-Funnel):    https://nxt-wave-7dyn.onrender.com/index.html
   - Track B (Bottom-of-Funnel): https://nxt-wave-7dyn.onrender.com/call-to-close.html
@@ -9,94 +9,108 @@ Live App Links:
 
 --- PRE-RECORDING CHECKLIST ---
 1. Tab 1 Open: https://nxt-wave-7dyn.onrender.com/index.html (Track A loaded)
-2. Tab 2 Open: https://nxt-wave-7dyn.onrender.com/call-to-close.html (Track B loaded)
+2. Tab 2 Open: https://nxt-wave-7dyn.onrender.com/call-to-close.html (Track B loaded with Call #1 selected)
 3. Tab 3 Open: Telegram Web showing @rag1729bot (or have mobile ready)
-4. Loom settings: Webcam bubble in the corner, screen sharing browser window.
+4. Loom Settings: Screen sharing with webcam bubble in corner.
 
 ================================================================================
-[0:00 – 0:35] THE FULL-FUNNEL HOOK: TRACK A + TRACK B
+[0:00 – 0:30] THE FULL-FUNNEL HOOK & "QUALITY VS. QUANTITY" DILEMMA
 ================================================================================
-[ON SCREEN: Camera / Face view + Browser tab showing index.html]
+[ON SCREEN: Camera / Face view + Browser showing index.html]
 
 "Hi everyone, I’m Mouli. During my 60-minute audit of NIAT for Layer 1, I looked 
 at their entire customer journey. 
 
-Most people build an isolated tool, but I decided to engineer an end-to-end, 
-two-track AI growth system covering both ends of the funnel: 
+Most people build an isolated demo, but I engineered an end-to-end, two-track AI 
+growth system covering both ends of the funnel: Track A at the top to generate 
+viral, zero-cost student leads, and Track B at the bottom to solve the high-friction 
+parent sales closing calls.
 
-Track A at the top of the funnel to capture viral, low-cost student leads, and 
-Track B at the bottom to solve the high-friction parent sales closing calls.
-
-Let me walk you through both live systems running on Render."
+In BDA sales, reps are trapped in a brutal Quality versus Quantity dilemma: 
+spending 20 minutes researching one lead kills daily call volume. Our system breaks 
+this bottleneck by automating that research in 60 seconds."
 
 ================================================================================
-[0:35 – 1:10] TRACK A: TOP-OF-FUNNEL VIRAL "CAREER DNA" ASSESSMENT
+[0:30 – 1:00] TRACK A: TOP-OF-FUNNEL VIRAL "CAREER DNA" ASSESSMENT
 ================================================================================
 [ON SCREEN: Navigate through https://nxt-wave-7dyn.onrender.com/index.html]
 
-"Starting at the top of the funnel—Track A. Today, NIAT burns heavy ad spend on 
-Meta and Google to acquire student leads. 
+"Starting at the top—Track A. Today, NIAT spends heavily on ads to get leads. 
 
-[ACTION: Quickly show the multilingual selector (Telugu, Hindi, Tamil) & assessment]
+[ACTION: Show the language selector (Telugu, Hindi, Tamil) & assessment questions]
 
 To fix this, I built the AI Career DNA Assessment. It's a free, 2-minute mobile-first 
-tool available in 6 Indian languages that intercepts 12th graders right after board 
-results. 
+tool in 6 Indian languages that intercepts 12th graders right after board results. 
 
-It assesses cognitive traits, generates a personalized AI career trajectory with 
-earning potential, and automatically routes the student to their best-fit NIAT 
-partner campus—ending with a seamless one-click NAT registration CTA. It turns 
-board-result anxiety into a zero-marginal-cost viral distribution engine."
+It assesses cognitive traits, maps them to high-growth tech paths with salary 
+trajectories, and routes them to their nearest NIAT partner campus with a 1-click 
+NAT registration CTA—generating viral, high-intent leads at zero media cost."
 
 ================================================================================
-[1:10 – 2:15] TRACK B: BOTTOM-OF-FUNNEL "CALL-TO-CLOSE RL SALES ENGINE"
+[1:00 – 2:15] TRACK B: EXACT AI OUTPUTS ON THE SALES DASHBOARD
 ================================================================================
 [ON SCREEN: Switch tab to https://nxt-wave-7dyn.onrender.com/call-to-close.html]
 
-"Now, once those leads write the ₹1,200 NAT exam, they hit the hardest chokepoint 
-in the company: the 40-minute parent phone call, where 68% of parents stall over 
-paying the seat booking fee. 
+"Now, once those leads write the ₹1,200 NAT exam, they hit the hardest chokepoint: 
+the 40-minute parent phone call where 68% of parents stall over the seat fee.
 
-Counsellors get trapped in a brutal Quality versus Quantity dilemma: spending 
-20 minutes researching one lead to convince them kills their daily call volume. 
+Here is the live dashboard running on Render. Let's look at the exact AI outputs:
 
-Track B is the Call-to-Close RL Sales Engine that breaks this bottleneck:
+[ACTION: Point cursor to Left Column — Lead Metadata & Diarized Transcript]
 
-[ACTION: Click a sample test call or upload audio]
+1. Lead & Speech Intelligence: The AI transcribes the code-mixed Telugu-English audio 
+and automatically extracts:
+   - Location: Tirupati, AP
+   - Dialect: Telugu + English (Telugish)
+   - Parent Persona: 'Value-Conscious Govt Employee Father'
 
-1. Multimodal Indic Speech: It transcribes code-mixed Telugu, Hindi, and English 
-audio without losing the parent's emotional hesitation.
+[ACTION: Point cursor to Top Right Banner — Primary Hesitation & Star Policy]
 
-2. 3-Step Sequential Search: It extracts the exact objection (like the 250% fee 
-difference), live-searches the competitor college's outdated syllabus and low ₹3.6 LPA 
-median package, and fetches grounded NIAT proofs—specifically showing that Year-2 
-paid internships (₹15k–₹25k/month) offset ₹3.5 to ₹4.5 Lakhs of the fee before graduation.
+2. The Core Hesitation: It pins down the exact deal-killing objection: 
+'250% Fee Premium vs Direct Convenor Quota at Mohan Babu University'. 
+And the Reinforcement Learning Contextual Bandit selected our highest win-rate policy: 
+'Angle A: Financial Stipend Offset' with a 47.6% win rate.
 
-[ACTION: Scroll down to show generated Battlecard and Policy Matrix table]
+[ACTION: Point cursor to the two Middle Cards — Competitor Reality vs NIAT Proofs]
 
-3. Contextual Bandit RL Loop: When a counsellor closes a lead, they log Reward = +1, 
-promoting that script into a 'Golden Template' across the entire sales floor. If stalled, 
-Reward = 0 automatically mutates the angle for Call #2.
+3. The 3-Step Search Comparison:
+   - On the left, it scraped Mohan Babu's real stats: a ₹3.5L fee, 38% placement rate, 
+     a ₹3.8 LPA average, and an outdated 2021 syllabus.
+   - On the right, it pulled verified NIAT proof points: showing that Year-2/3 mandatory 
+     paid internships (₹15,000–₹25,000/month) recover ₹3.5 to ₹4.5 Lakhs of the fee before 
+     graduation, backed by local Tirupati alumni Srikanth Naidu placed at ₹14.2 LPA.
 
-[ACTION: Show Telegram bot @rag1729bot on screen or mobile]
+[ACTION: Point cursor to Bottom — 3 Grounded Pitch Bullets & Verbatim Pitch]
 
-We wired this to Telegram via MCP so counsellors receive real-time battlecards on 
-their phone using @rag1729bot."
+4. Actionable Battlecard: Instead of generic advice, it outputs 3 exact talking points:
+   empathize with their budget, drop the stipend offset math, and cite the local alumni.
+   Plus a verbatim spoken closing pitch ready for the counsellor to read out or forward 
+   on WhatsApp."
 
 ================================================================================
-[2:15 – 2:50] THE FULL FLYWHEEL & EXPERIMENT WRAP-UP
+[2:15 – 2:35] REINFORCEMENT LEARNING FEEDBACK LOOP & TELEGRAM BOT
 ================================================================================
-[ON SCREEN: Return to camera view or full-screen dashboard]
+[ON SCREEN: Point to +1 Won / 0 Stalled buttons & show Telegram Bot @rag1729bot]
 
-"By connecting Track A viral lead gen with Track B sales intelligence, we create a 
-complete growth flywheel: organic high-intent leads generated at zero media cost, 
-closed by counsellors armed with 60-second research and self-learning scripts.
+"This isn't static. It's a closed Reinforcement Learning loop. 
+When the parent pays the seat fee, the counsellor clicks Reward = +1, promoting 
+that script to a Golden Template across the entire sales team. If stalled, Reward = 0 
+mutates the pitch angle for Call #2.
 
-In our 10-day pilot across 20 counsellors, this cuts prep time from 15 minutes to 
-under 3 minutes—unlocking 1.4x more daily parent calls and driving a projected 
-18–22% lift in seat booking fee conversions.
+We also wired this via MCP to Telegram. Field counsellors receive these exact battlecards 
+on their phone using @rag1729bot."
 
-Both Track A and Track B are 100% functional and live on Render right now. 
+================================================================================
+[2:35 – 2:55] 10-DAY EXPERIMENT & WRAP UP
+================================================================================
+[ON SCREEN: Return to camera or full-screen view]
+
+"For our pilot, we’d test this across 20 counsellors handling 400 post-NAT calls. 
+Our target is a 16% lift in 7-day seat fee payments, while cutting counsellor prep 
+time from 15 minutes down to under 3 minutes—unlocking 1.4x more daily parent calls.
+
+By connecting Track A viral lead gen with Track B sales intelligence, we built a 
+complete, working growth flywheel live on Render. 
 
 Thank you!"
 
