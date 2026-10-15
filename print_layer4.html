@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layer 4: Reflection</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --text-main: #0f172a;
+            --text-muted: #334155;
+            --accent: #2563eb;
+            --border: #e2e8f0;
+            --bg-card: #f8fafc;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: var(--text-main);
+            background-color: #f1f5f9;
+            line-height: 1.5;
+            font-size: 14px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .no-print-bar {
+            background: #1e293b;
+            color: #fff;
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .no-print-bar p {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .btn-print {
+            background: #2563eb;
+            color: #fff;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 13.5px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-print:hover {
+            background: #1d4ed8;
+            transform: translateY(-1px);
+        }
+
+        .page-container {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 24mm 22mm;
+            margin: 24px auto;
+            background: #fff;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border-radius: 4px;
+        }
+
+        .doc-header {
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 12px;
+            margin-bottom: 24px;
+        }
+
+        .doc-badge {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--accent);
+            background: #eff6ff;
+            padding: 3px 10px;
+            border-radius: 4px;
+            margin-bottom: 8px;
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: 800;
+            color: #0f172a;
+            letter-spacing: -0.4px;
+        }
+
+        .section {
+            margin-bottom: 24px;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            text-align: justify;
+            font-size: 13.8px;
+        }
+
+        .rating-box {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #ecfdf5;
+            border: 1px solid #10b981;
+            color: #065f46;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 15px;
+            margin-bottom: 12px;
+        }
+
+        ol {
+            padding-left: 20px;
+            margin-bottom: 12px;
+        }
+
+        li {
+            margin-bottom: 8px;
+            color: var(--text-muted);
+            font-size: 13.5px;
+        }
+
+        li strong {
+            color: #0f172a;
+        }
+
+        .footnote {
+            background: var(--bg-card);
+            border-left: 3px solid #94a3b8;
+            padding: 10px 14px;
+            font-size: 12.8px;
+            color: #475569;
+            margin-top: 14px;
+            border-radius: 0 6px 6px 0;
+        }
+
+        @media print {
+            body {
+                background: #fff;
+            }
+            .no-print-bar {
+                display: none !important;
+            }
+            .page-container {
+                margin: 0 !important;
+                padding: 18mm 20mm !important;
+                box-shadow: none !important;
+                border-radius: 0 !important;
+                width: 100% !important;
+                min-height: auto !important;
+            }
+            @page {
+                size: A4 portrait;
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="no-print-bar">
+        <p>📄 <b>Layer 4: Reflection</b> — Pre-formatted for 1-Page PDF Export</p>
+        <button class="btn-print" onclick="window.print()">🖨️ Save as 1-Page PDF (Ctrl + P)</button>
+    </div>
+
+    <div class="page-container">
+        <div class="doc-header">
+            <span class="doc-badge">Layer 4: Reflection</span>
+            <h1>Candidate Reflection & Self-Evaluation</h1>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Question 1: What's one thing you learned about yourself while doing this challenge? (~100 words)</h2>
+            <p>
+                I learned that as a builder, I don't like building simple, flashy AI demos that look cool on paper but don't solve real problems. When looking at NIAT, making another generic AI chatbot or quiz would have taken an hour, but it wouldn't solve where NIAT actually loses admissions. Instead, I focused on the hardest part of the business: the 40-minute parent phone call where parents hesitate about the ₹12L fee versus local colleges. I realized I really enjoy connecting messy real-world workflows—taking mixed Indian speech, searching real facts, and building a Reinforcement Learning feedback loop that actually learns what works.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Question 2: Rate your own submission out of 10 and tell us why. (~100 words)</h2>
+            
+            <div class="rating-box">
+                ⭐ Rating: 9.2 / 10
+            </div>
+
+            <p><strong>Why:</strong> Because I didn't just submit a slide deck or a theoretical plan. I built a working full-stack system:</p>
+            <ol>
+                <li><strong>Audio Ingestion:</strong> Accepts real parent call audio uploads and live microphone recordings.</li>
+                <li><strong>3-Step Sequential Search:</strong> Pulls competitor college facts and verified NIAT proof points without making things up.</li>
+                <li><strong>Reinforcement Learning Loop:</strong> Promotes winning pitches to a "Golden Template" when a seat fee is paid.</li>
+                <li><strong>Dual WhatsApp / Telegram Bot:</strong> A live working Telegram bot (<code>@rag1729bot</code>) for counsellors to get battlecards on their phone.</li>
+            </ol>
+
+            <div class="footnote">
+                The only reason I'm taking off 0.8 is because hooking this directly into enterprise CRMs (like LeadSquared) and live call streaming would be the next step for a full production rollout.
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
