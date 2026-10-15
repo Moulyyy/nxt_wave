@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layer 1: The 60-Minute NIAT Audit</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --text-main: #0f172a;
+            --text-muted: #334155;
+            --accent: #2563eb;
+            --border: #e2e8f0;
+            --bg-card: #f8fafc;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: var(--text-main);
+            background-color: #f1f5f9;
+            line-height: 1.45;
+            font-size: 13.5px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .no-print-bar {
+            background: #1e293b;
+            color: #fff;
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .no-print-bar p {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .btn-print {
+            background: #2563eb;
+            color: #fff;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 13.5px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-print:hover {
+            background: #1d4ed8;
+            transform: translateY(-1px);
+        }
+
+        .page-container {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 18mm 18mm;
+            margin: 24px auto;
+            background: #fff;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border-radius: 4px;
+        }
+
+        .doc-header {
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 10px;
+            margin-bottom: 14px;
+        }
+
+        .doc-badge {
+            display: inline-block;
+            font-size: 10.5px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--accent);
+            background: #eff6ff;
+            padding: 3px 8px;
+            border-radius: 4px;
+            margin-bottom: 6px;
+        }
+
+        h1 {
+            font-size: 22px;
+            font-weight: 800;
+            color: #0f172a;
+            letter-spacing: -0.4px;
+        }
+
+        .section {
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .section-title span.num {
+            color: var(--accent);
+        }
+
+        p {
+            color: var(--text-muted);
+            margin-bottom: 6px;
+            text-align: justify;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 6px;
+        }
+
+        ul li {
+            position: relative;
+            padding-left: 14px;
+            margin-bottom: 5px;
+            color: var(--text-muted);
+            font-size: 12.8px;
+            line-height: 1.4;
+        }
+
+        ul li::before {
+            content: "•";
+            position: absolute;
+            left: 2px;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        ul li strong {
+            color: #0f172a;
+        }
+
+        .highlight-box {
+            background: var(--bg-card);
+            border-left: 3px solid var(--accent);
+            padding: 8px 12px;
+            border-radius: 0 6px 6px 0;
+            margin-top: 6px;
+        }
+
+        .highlight-box p {
+            margin-bottom: 4px;
+            font-size: 12.6px;
+        }
+
+        .highlight-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        @media print {
+            body {
+                background: #fff;
+            }
+            .no-print-bar {
+                display: none !important;
+            }
+            .page-container {
+                margin: 0 !important;
+                padding: 12mm 14mm !important;
+                box-shadow: none !important;
+                border-radius: 0 !important;
+                width: 100% !important;
+                min-height: auto !important;
+            }
+            @page {
+                size: A4 portrait;
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="no-print-bar">
+        <p>📄 <b>Layer 1: The 60-Minute NIAT Audit</b> — Pre-formatted for 1-Page PDF Export</p>
+        <button class="btn-print" onclick="window.print()">🖨️ Save as 1-Page PDF (Ctrl + P)</button>
+    </div>
+
+    <div class="page-container">
+        <div class="doc-header">
+            <span class="doc-badge">Layer 1: The 60-Minute NIAT Audit</span>
+            <h1>NIAT Acquisition & Competitive Landscape Audit</h1>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title"><span class="num">1.</span> What NIAT Actually Is (88 Words)</h2>
+            <p>
+                Basically, NIAT (NxtWave of Innovation in Advanced Technologies) isn't an independent university with its own private campus. It's an on-campus collaboration model running inside 35+ existing Tier-2 and Tier-3 private universities across India (like Chaitanya Deemed University, Aurora, Crescent, and Sandip University).
+            </p>
+            <p>
+                The host college provides the campus and awards the official 4-year UGC-recognized B.Tech degree. Meanwhile, NIAT takes over the actual academics from Day 1—scrapping the outdated syllabus, teaching modern branches like AI/ML, Data Science, and Robotics with industry mentors, and driving placements through NxtWave's company network.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title"><span class="num">2.</span> Acquisition & Conversion Channels NIAT Runs Today</h2>
+            <ul>
+                <li><strong>The ₹1,200 NAT Exam Funnel:</strong> Students pay ₹1,200 for an online entrance test that promises scholarships and unlocks a mandatory 1:1 parent counselling call for admission.</li>
+                <li><strong>Offline Posters in Hyderabad Malls & Junior Colleges:</strong> Physical banners and standees placed in family-heavy spots like Sarath City Capital Mall and Inorbit Mall to catch parents on weekends, paired with seminars at Inter colleges like Narayana and Sri Chaitanya.</li>
+                <li><strong>YouTube Review Collaborations (e.g., Vedantu):</strong> Partnering with trusted exam channels like Vedantu to break down NIAT’s partner colleges, fees, and admission process and drive high-trust traffic to the NAT link.</li>
+                <li><strong>Free Weekend AI Bootcamps:</strong> Running 40-minute online project bootcamps for 12th graders with gadget rewards (iPads, smartwatches) to capture student phone numbers early.</li>
+                <li><strong>Instagram "Builder" Reels:</strong> Promoting short-form videos of 1st-year students building drones, winning hackathons, and pitching startups instead of sitting in traditional lectures.</li>
+                <li><strong>WhatsApp Drips & Regional 1:1 Parent Calls:</strong> Automated WhatsApp reminders followed by counsellors calling in Telugu, Hindi, or Tamil to pitch parents and collect the seat booking fee.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title"><span class="num">3.</span> The 2 Biggest Competitors & What They Do Better</h2>
+            <ul>
+                <li><strong>Scaler School of Technology (SST) — Free Workshops as a Trust Hook:</strong> Having personally attended one of Scaler's free online workshops, their top-of-funnel is much better. They let you sit in a real, high-value live class with a top tech engineer for free. You experience their teaching quality with zero friction, and only then do they pitch their 4-year UG program. In contrast, NIAT asks students to pay ₹1,200 for an exam right at the start before building that trust.</li>
+                <li><strong>Newton School of Technology (NST) — Selling Real Campus & Cultural Life:</strong> Looking at Newton's Instagram, they do a far better job showing full college life—big cultural fests, concerts, sports, and vibrant hostel living. NIAT’s social media is almost 100% coding grind and pitch decks, which makes 12th graders and parents worry whether they will miss out on actual college fun.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title"><span class="num">4.</span> The Hidden Detail (The Real Story Behind the ₹1,200 NAT Exam)</h2>
+            <p>
+                Everyone thinks the ₹1,200 NAT exam is an entrance test to filter top students, but it's actually a paid lead qualifier and psychological profiling tool for NIAT's sales team. If you check the 90-minute exam pattern, it has 82 questions—but <strong>44 questions (more than 53%) are Psychometric questions</strong> with no right or wrong answers. It has zero negative marking and no public qualifying cutoff.
+            </p>
+            <div class="highlight-box">
+                <p><strong>1. The Sunk-Cost Commitment:</strong> When a middle-class parent pays ₹1,200 from their pocket, they feel invested and will definitely attend the 1:1 counselling call to see what scholarship their child got.</p>
+                <p><strong>2. The Sales Cheat-Sheet:</strong> Those 44 psychometric questions give the sales counsellor a complete psychological profile of the student's fears, interests, and mindset before the call even begins, making it much easier to pitch and close the seat fee.</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

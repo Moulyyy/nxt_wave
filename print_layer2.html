@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layer 2: Track B Strategy (Call-to-Close RL Sales Engine)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --text-main: #0f172a;
+            --text-muted: #334155;
+            --accent: #2563eb;
+            --border: #e2e8f0;
+            --bg-card: #f8fafc;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: var(--text-main);
+            background-color: #f1f5f9;
+            line-height: 1.42;
+            font-size: 13px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .no-print-bar {
+            background: #1e293b;
+            color: #fff;
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .no-print-bar p {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .btn-print {
+            background: #2563eb;
+            color: #fff;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 13.5px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-print:hover {
+            background: #1d4ed8;
+            transform: translateY(-1px);
+        }
+
+        .page-container {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 16mm 18mm;
+            margin: 24px auto;
+            background: #fff;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border-radius: 4px;
+        }
+
+        .doc-header {
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 8px;
+            margin-bottom: 12px;
+        }
+
+        .doc-badge {
+            display: inline-block;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--accent);
+            background: #eff6ff;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-bottom: 4px;
+        }
+
+        h1 {
+            font-size: 20px;
+            font-weight: 800;
+            color: #0f172a;
+            letter-spacing: -0.3px;
+            margin-bottom: 3px;
+        }
+
+        .one-liner {
+            font-size: 12.5px;
+            color: #475569;
+            font-style: italic;
+        }
+
+        .section {
+            margin-bottom: 10px;
+        }
+
+        .section-title {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .section-title span.num {
+            color: var(--accent);
+        }
+
+        p {
+            color: var(--text-muted);
+            margin-bottom: 5px;
+            text-align: justify;
+            font-size: 12.8px;
+        }
+
+        ul, ol {
+            padding-left: 14px;
+            margin-bottom: 5px;
+        }
+
+        li {
+            margin-bottom: 4px;
+            color: var(--text-muted);
+            font-size: 12.5px;
+            line-height: 1.38;
+        }
+
+        li strong {
+            color: #0f172a;
+        }
+
+        .highlight-box {
+            background: var(--bg-card);
+            border-left: 3px solid var(--accent);
+            padding: 6px 12px;
+            border-radius: 0 6px 6px 0;
+            margin: 6px 0;
+        }
+
+        .highlight-box p {
+            margin-bottom: 3px;
+            font-size: 12.4px;
+        }
+
+        .highlight-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        @media print {
+            body {
+                background: #fff;
+            }
+            .no-print-bar {
+                display: none !important;
+            }
+            .page-container {
+                margin: 0 !important;
+                padding: 10mm 14mm !important;
+                box-shadow: none !important;
+                border-radius: 0 !important;
+                width: 100% !important;
+                min-height: auto !important;
+            }
+            @page {
+                size: A4 portrait;
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="no-print-bar">
+        <p>📄 <b>Layer 2: Track B Strategy</b> — Pre-formatted for 1-Page PDF Export</p>
+        <button class="btn-print" onclick="window.print()">🖨️ Save as 1-Page PDF (Ctrl + P)</button>
+    </div>
+
+    <div class="page-container">
+        <div class="doc-header">
+            <span class="doc-badge">Layer 2: Track B (Bottom-of-Funnel — Lead to Sale)</span>
+            <h1>The Avenue: Call-to-Close RL Sales & Parent Proof Engine</h1>
+            <div class="one-liner">An AI conversion engine that listens to parent-counsellor call recordings, sequentially searches real facts on whatever local college the parent mentioned, sends a custom closing battlecard to the counsellor’s WhatsApp + a tailored proof sheet to the parent, and learns which pitch closes seat fees using Reinforcement Learning.</div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title"><span class="num">1.</span> What It Is & Why NIAT Isn't Running It Today</h2>
+            <p>
+                After students finish the ₹1,200 NAT exam, the entire admission depends on a 40-minute call between an Academic Counsellor and the parents to collect a ₹25,000–₹50,000 seat booking fee. Right now, ~65–70% of qualified leads stall here. Counsellors take 8 to 12 calls daily and get exhausted. If a parent in Guntur or Warangal compares NIAT to a local EAPCET college (like CMR or Mohan Babu University), the counsellor doesn't have exact comparison facts off the top of their head. They spend 15 minutes after each call trying to remember notes or send generic, pushy WhatsApp texts ("Last chance to claim scholarship!"). On Reddit (r/Btechtards) and Quora, parents constantly complain that NIAT counsellors push generic sales scripts without answering their real doubts. NIAT isn't running an automated system that turns raw call audio into verified local-college comparisons and learns which exact objection-handling pitch actually makes parents pay.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title"><span class="num">2.</span> Why It Fits NIAT Specifically</h2>
+            <ul>
+                <li><strong>Solving the 250% Fee Difference:</strong> NIAT’s hardest objection is when parents say: <em>"Why should I pay ₹12L–₹16L for NIAT at a partner campus when my kid can get a local college like CMR or even the same partner university through state quota for ₹3L–₹4L?"</em> A human counsellor cannot memorize fee and placement realities for 500+ local colleges. Our system runs live sequential search to compare the local college's real stats against NIAT's Year-2 paid internships (₹15k–₹25k/month stipend offsetting ₹3.5L–₹4.5L), handing both the counsellor and parent the exact math.</li>
+                <li><strong>Handling Telugu / Hindi / Tamil Code-Mixing:</strong> Most parent calls aren't in formal English—they happen in mixed Telugu-English or Hindi-English. The system uses Indian-language speech-to-text to pick up the parent's exact emotional doubts.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title"><span class="num">3.</span> Our Hypothesis (With Best-Guess Numbers)</h2>
+            <div class="highlight-box">
+                <p><strong>Current Baseline:</strong> Counsellors lose ~2 hours/day on manual follow-up prep, and ~68% of post-NAT parent calls fail to convert to a seat fee within 7 days because specific parent objections go unanswered.</p>
+                <p><strong>Hypothesis:</strong> Giving counsellors an instant, sequentially researched Call #2 Battlecard + sending parents a personalized vernacular proof note within 2 minutes of Call #1—backed by an RL loop that promotes winning scripts—will cut counsellor prep time by 80% (from 15 mins to &lt;3 mins) and lift 7-day Call-to-Seat-Fee conversion by 18–22%.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title"><span class="num">4.</span> How the Engine Works (Step-by-Step)</h2>
+            <ol>
+                <li><strong>Call Audio Upload:</strong> The counsellor uploads the call recording or drops a quick voice note right after Call #1.</li>
+                <li><strong>3-Step Sequential Search:</strong> Extracts parent core hesitation & local college mentioned ➔ Live web search on competitor college for median placement & syllabus gaps ➔ Grounded NIAT proof (UGC Section 2(f), paid internships, alumni startups).</li>
+                <li><strong>Reinforcement Learning (Contextual Bandit) Loop:</strong> Selects the top pitch angle. If seat fee paid (<strong>Reward = +1</strong>): promoted to "Golden Template" for all BDAs. If lead stalls (<strong>Reward = 0</strong>): lowers score and mutates pitch for Call #2.</li>
+                <li><strong>MCP WhatsApp / Telegram Delivery:</strong> Pushes battlecards directly to counsellor's phone via MCP, alongside a ready-to-forward vernacular summary card for the parent.</li>
+            </ol>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title"><span class="num">5.</span> The ONE Experiment We'd Run First & Success Threshold</h2>
+            <p>
+                <strong>Test Setup (10-Day Sprint):</strong> 20 counsellors handling ~400 post-NAT parent calls across AP and Telangana. 10 counsellors use the AI Call-to-Close RL Engine (Test = 200 calls); 10 use standard manual follow-up (Control = 200 calls).<br>
+                <strong>Primary Metric & Threshold:</strong> 7-Day Post-Call Seat Booking Fee Conversion Rate. <strong>Success:</strong> &ge;16% relative increase in paid seat reservations in Test group, and counsellor prep time &lt;3 mins. (Kill if lift &lt;10% after 200 calls).
+            </p>
+        </div>
+    </div>
+
+</body>
+</html>

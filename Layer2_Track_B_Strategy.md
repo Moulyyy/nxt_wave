@@ -1,142 +1,44 @@
-# LAYER 2: TRACK B (BOTTOM-OF-FUNNEL — LEAD TO SALE)
+# Layer 2: Track B Strategy (Bottom-of-Funnel — Lead to Sale)
 
-# The Avenue: "Call-to-Close RL Engine" — Autonomous Call Intelligence, Sequential Research & Self-Optimizing Pitch System
-
-## What It Is & Why NIAT Isn't Running It
-After a 12th-grade student clears the ₹1,200 NAT (NxtWave Aptitude Test), conversion shifts from digital marketing to a high-touch 1:1 counselling pipeline. This journey is divided into three critical touchpoints:
-1. **Student Session:** Technical aspirations, coding interest, and aptitude validation.
-2. **Parent Session:** Safety, campus environment, UGC degree legitimacy, and the financial ROI calculation.
-3. **Joint Closing Session:** Overcoming final hesitations and collecting the seat reservation fee.
-
-Today, Business Development Associates (BDAs) and Academic Counsellors finish an exhaustive 40-minute parent call and immediately dial the next lead. They operate under severe cognitive overload:
-- They lack time to research the specific Tier-3 or local college the parent is comparing NIAT against.
-- They cannot map specific NIAT Skill Map modules or alumni proof points to the student's exact niche interest on the fly.
-- They follow up with slow, generic WhatsApp messages ("Pay seat fee now to lock your seat").
-- Crucially, they lack a systematic feedback loop to know which objection-handling script actually drives seat-fee payments versus which one triggers ghosting.
-
-While generic sales QA tools audit whether a rep spoke for enough minutes, **NIAT is not running an autonomous Call-to-Close RL Loop**. 
-
-The **Call-to-Close RL Engine** ingests parent-counsellor call recordings, transcribes multi-lingual Indian speech (Telugu, Hindi, Tamil, English code-mixing), executes a 3-step sequential agentic search, and delivers **Dual-Sided Call-to-Close Synchronization**:
-1. **Internal (to Counsellor's WhatsApp):** A hyper-personalized Next-Call Battlecard and Closing Script powered by a Reinforcement Learning (Contextual Bandit) policy engine.
-2. **External (to Parent's WhatsApp):** An automated, personalized "Post-Call Clarity Note" in the parent's native language addressing their exact objections with verified proof.
-
-When a lead pays the seat fee, the system receives a **Reward = +1**, promoting that script into a "Golden Template" across all BDAs. When a lead stalls, a **Reward = 0** penalizes the strategy and mutates the pitch for Follow-Up Call #2.
+### The Avenue: Call-to-Close RL Sales & Parent Proof Engine
+**One-Liner:** An AI conversion engine that listens to parent-counsellor call recordings, sequentially searches real facts on whatever local college the parent mentioned, sends a custom closing battlecard to the counsellor’s WhatsApp + a tailored proof sheet to the parent, and learns which pitch closes seat fees using Reinforcement Learning.
 
 ---
 
-## Why It Fits NIAT Specifically (Not Generic EdTech Advice)
+### 1. What It Is & Why NIAT Isn't Running It Today
+After students finish the ₹1,200 NAT exam, the entire admission depends on a 40-minute call between an Academic Counsellor and the parents to collect a ₹25,000–₹50,000 seat booking fee.
 
-### 1. Solving the 35-Campus & "250% Fee Premium" Objection
-NIAT's hardest conversion hurdle occurs when parents compare paying **₹10L–₹16L for NIAT** against paying **₹3L–₹4L via state quota (EAMCET / KCET / TNEA)** at the *exact same* or similar local partner universities (e.g., Mohan Babu University, ADYPU, CMR).
-Parents routinely voice skepticism seen across Reddit and regional forums: *"Why should I pay 250% more for my child to study at the same campus as a regular student?"*
-
-A human counsellor cannot memorize the fee structures, faculty ratios, and outdated curricula of 500+ regional engineering colleges across Andhra Pradesh, Telangana, Tamil Nadu, Karnataka, and Maharashtra. 
-Our agent listens to the parent's exact words on Call #1, sequentially scrapes the mentioned local college's real placement reality (e.g., 38% placement rate, ₹3.8 LPA avg, no AI modules), matches it against NIAT's Year-1 paid internship stipend track (₹15k–₹25k/mo) and Skill Map, and hands the counsellor an irrefutable objection-handling battlecard.
-
-### 2. Vernacular Code-Mixing (Telugish, Tanglish, Hinglish)
-Over 80% of NIAT parent calls occur in regional dialects mixed with English. Standard English-only LLM pipelines fail to understand context or emotional nuance. By integrating Indic speech-to-text (such as Sarvam Saaras or Deepgram Indic models), the engine accurately transcribes code-mixed audio, extracts the root fear, and drafts parent follow-ups in their mother tongue (Telugu, Hindi, Tamil, Kannada).
-
-### 3. Counsellor Bandwidth as the Core Growth Bottleneck
-Counsellors currently spend ~15 minutes per lead listening back to messy recordings, looking up collateral, or writing manual follow-ups. Reducing this prep time to **under 3 minutes** immediately raises daily call volume by **1.4x without adding headcount**.
+Right now, ~65–70% of qualified leads stall here. Counsellors take 8 to 12 calls daily and get exhausted. If a parent in Guntur or Warangal compares NIAT to a local EAPCET college (like CMR or Mohan Babu University), the counsellor doesn't have exact comparison facts off the top of their head. They spend 15 minutes after each call trying to remember notes or send generic, pushy WhatsApp texts ("Last chance to claim scholarship!"). On Reddit (r/Btechtards) and Quora, parents constantly complain that NIAT counsellors push generic sales scripts without answering their real doubts. NIAT isn't running an automated system that turns raw call audio into verified local-college comparisons and learns which exact objection-handling pitch actually makes parents pay.
 
 ---
 
-## System Architecture & The Contextual Bandit Loop
-
-```
-[Call Recording / Audio]
-        │
-        ▼
-[Indic Diarized STT (Sarvam / Whisper)]  ──> Speaker A: Counsellor | Speaker B: Parent
-        │
-        ▼
-[Sequential Agentic Search (3 Sequential Tools)]
-  ├── Tool 1: extract_call_state()
-  │     └── Extracts: { Parent Persona, Primary Objection, Mentioned Competitor, Language }
-  ├── Tool 2: search_competitor_reality()
-  │     └── Live scrape of competitor college syllabus, fees & real placement stats
-  └── Tool 3: fetch_niat_curriculum_proof()
-        └── Queries NIAT RAG: Skill Map, Year-1 Stipends, UGC accreditation
-        │
-        ▼
-[Contextual Bandit Policy Engine (Supabase script_policies)]
-  ├── High Win Rate (>40%) ──> EXPLOITATION: Pull "Golden Template" + inject live search facts
-  └── Stalled / Low Win Rate ──> MUTATION / EXPLORATION: Rotate to next strategic angle
-        │
-        ▼
-[Dual-Sided MCP Delivery Layer]
-  ├── (Internal) Counsellor WhatsApp: Next-Call Pitch Battlecard & Talking Points
-  └── (External) Parent WhatsApp: Vernacular Post-Call Clarity Note (Human-Approved)
-        │
-        ▼
-[Closed-Loop Outcome Feedback]
-  ├── Seat Fee Paid (Reward = +1) ──> Promotes Golden Template + Alerts Sales Team
-  └── Stalled / Dropped (Reward = 0) ──> Mutates Script for Follow-Up Call #2
-```
-
-### The 3 Sequential Agentic Tool Calls:
-1. `extract_call_state(transcript)`: Extracts structured state `{ parent_persona, primary_objection, competitor_college, student_interest, language, hesitation_intensity }`.
-2. `search_competitor_reality(competitor_college)`: Executes external search to pull actual syllabus age, average placement package, and median salary of the mentioned local institution.
-3. `fetch_niat_curriculum_proof(objection_type, student_interest)`: Fetches strictly verified NIAT proof points from the internal knowledge base (e.g., UGC degree verification link, Year-1 stipend data, alumni from the parent's home district). **Strict Guardrail:** No hallucinated placement metrics.
-
-### Contextual Bandit Policy Engine (`script_policies`):
-Rather than static prompting, strategies are stored and scored dynamically:
-- **Angle A:** *Financial Stipend Offset* (Demonstrates how ₹20K/month 2nd-year stipends offset the 250% fee difference).
-- **Angle B:** *Local Peer & Startup Proof* (Cites specific students from the parent's tier-2 town placed in product firms).
-- **Angle C:** *UGC Degree Legitimacy & Dual Certification* (Clarifies university degree recognition + NIAT industry credential).
-- **Exploit vs Explore:** High win-rate angles are favored. If a lead stalls on Call #1 with Angle A, the system explores Angle B or C for Call #2.
+### 2. Why It Fits NIAT Specifically
+* **Solving the 250% Fee Difference:** NIAT’s hardest objection is when parents say: *"Why should I pay ₹12L–₹16L for NIAT at a partner campus when my kid can get a local college like CMR or even the same partner university through state quota for ₹3L–₹4L?"* A human counsellor cannot memorize fee and placement realities for 500+ local colleges. Our system runs live sequential search to compare the local college's real stats against NIAT's Year-2 paid internships (₹15k–₹25k/month stipend offsetting ₹3.5L–₹4.5L), handing both the counsellor and parent the exact math.
+* **Handling Telugu / Hindi / Tamil Code-Mixing:** Most parent calls aren't in formal English—they happen in mixed Telugu-English or Hindi-English. The system uses Indian-language speech-to-text to pick up the parent's exact emotional doubts.
 
 ---
 
-## Hypothesis & Quantitative Projections
-
-**Current State:**
-- Counsellors spend ~25% of their daily shift manually prepping follow-ups or repeating generic pitches.
-- ~65–70% drop-off occurs between Parent Counselling Call #1 and Seat Reservation Fee payment.
-- Follow-up latency averages 4–6 hours, by which time parent skepticism hardens.
-
-**Hypothesis:**
-Arming counsellors within **60 seconds** of Call #1 with a sequentially researched, context-aware Call #2 script—plus delivering an automated, vernacular parent proof note—backed by an RL Contextual Bandit loop:
-1. **Reduces BDA per-lead prep time from 15 minutes to under 3 minutes** (an 80% reduction), unlocking **1.4x more daily parent touchpoints**.
-2. **Increases Call-1-to-Seat-Fee payment conversion by 22%** relative to unassisted control calls.
-3. **Accelerates follow-up delivery within 2 hours from 30% to over 90%**.
+### 3. Our Hypothesis (With Best-Guess Numbers)
+* **Current Baseline:** Counsellors lose ~2 hours/day on manual follow-up prep, and ~68% of post-NAT parent calls fail to convert to a seat fee within 7 days because specific parent objections go unanswered.
+* **Hypothesis:** Giving counsellors an instant, sequentially researched Call #2 Battlecard + sending parents a personalized vernacular proof note within 2 minutes of Call #1—backed by an RL loop that promotes winning scripts—will cut counsellor prep time by 80% (from 15 mins to <3 mins) and lift 7-day Call-to-Seat-Fee conversion by 18–22%.
 
 ---
 
-## The ONE Experiment (10-Day Scoped Pilot)
-
-- **Scope:** 10-day randomized A/B test across 20 BDAs handling post-NAT leads in Andhra Pradesh, Telangana, and Tamil Nadu (~400 Parent Counselling Call #1 recordings).
-- **Randomization:** Within-counsellor lead interleaving (each counsellor alternates between Copilot and Control leads) to eliminate variance in individual sales rep skill.
-- **Control Arm (10 BDAs, ~200 leads):** Standard CRM notes + manual WhatsApp messaging + unassisted Call #2 follow-up pitch.
-- **Test Arm (10 BDAs, ~200 leads):** Automated Call-to-Close RL Pipeline:
-  - Audio ingestion $\rightarrow$ Indic STT.
-  - Sequential Competitor & Curriculum Search.
-  - Contextual Bandit policy selection.
-  - WhatsApp push of Call #2 Battlecard to BDA + Draft Vernacular Note to Parent (with 1-click human approval).
-  - Outcome tracking: Paid (+1) or Stalled (0).
-- **Data Ethics & Guardrails:**
-  - Mandatory call recording consent logged (`consent_given: true`).
-  - Automated PII redaction (names, phone numbers, addresses stripped before LLM processing).
-  - Grounded RAG with zero tolerance for synthetic placement claims.
+### 4. How the Engine Works (Step-by-Step)
+1. **Call Audio Upload:** The counsellor uploads the call recording or drops a quick voice note right after Call #1.
+2. **3-Step Sequential Search:**
+   * Extracts the parent's core hesitation (e.g., fee difference or UGC degree validity) and the local college they mentioned.
+   * Runs a live web search on that competing college to pull its real median placement and syllabus gaps.
+   * Pulls verified NIAT facts from our curriculum knowledge base (UGC Section 2(f) proof, paid internship stipends, and regional student startups).
+3. **Reinforcement Learning (Contextual Bandit) Loop:**
+   * Selects the highest-converting pitch angle (Fee Offset Math vs. Local Student Proof vs. UGC Degree Safety).
+   * **If the parent pays the seat fee (Reward = +1):** That script is promoted to a "Golden Template" and triggers an instant alert for all counsellors to use.
+   * **If the lead stalls (Reward = 0):** The engine lowers that script's score and automatically mutates to a new angle for the next follow-up call.
+4. **MCP WhatsApp / Telegram Delivery:** Pushes the next-call script directly to the counsellor's phone via MCP, along with a ready-to-forward vernacular summary card for the parent.
 
 ---
 
-## How We Know It Worked (Metrics & Thresholds)
-
-### Primary Metric:
-- **7-Day Post-Counselling Seat Reservation Fee Conversion Rate**.
-- **Daily Qualified Parent Follow-Ups Completed per BDA**.
-
-### Success Threshold to Scale:
-- **$\ge$ 16% relative lift** in Call-1-to-Seat-Fee conversion in the Test cohort over Control.
-- **$\ge$ 30% increase** in daily completed follow-up calls per BDA.
-- **$\ge$ 75% counsellor adoption rate** of generated battlecards.
-
-### Kill Threshold:
-- **< 10% conversion lift** after 200 completed test leads.
-- **< 50% counsellor brief utilization** (indicating workflow friction rather than model inadequacy, prompting UI/integration redesign).
-
-### Secondary Operational Metrics:
-- Follow-up message dispatched within 2 hours: Lift from 30% to $\ge$ 85%.
-- Time spent researching competitor colleges: Drops from ~12 mins to 0 mins.
-- Objection distribution intelligence: Automated heatmap highlighting top deal-killing objections to inform marketing campaigns upstream.
+### 5. The ONE Experiment We'd Run First & Success Threshold
+* **Test Setup (10-Day Sprint):** 20 counsellors handling ~400 post-NAT parent calls across AP and Telangana. 10 counsellors use the AI Call-to-Close RL Engine (Test = 200 calls); 10 use the standard manual follow-up flow (Control = 200 calls).
+* **Primary Metric:** 7-Day Post-Call Seat Booking Fee Conversion Rate.
+* **Success Threshold:** $\ge$ 16% relative increase in paid seat reservations in the Test group, and counsellor prep time dropping below 3 minutes per call. (If conversion lift stays under 10% after 200 calls, we kill the experiment).

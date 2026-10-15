@@ -1,0 +1,48 @@
+# NxtWave / NIAT Growth & AI Engineer Challenge: Complete Context & Brief
+
+## 1. Challenge Overview & Philosophy
+The objective of this assignment is to demonstrate how a Growth & AI Engineer solves real-world customer acquisition and conversion bottlenecks for NIAT (NxtWave Institute of Advanced Technologies). 
+
+Generic ChatGPT / AI-generated submissions are filtered out at Layer 1 ("The Hard Filter"). The evaluation prioritizes:
+1. Ground-level, unmistakable personal observations and real competitor comparisons.
+2. Identifying the actual operational chokepoints in the admission funnel (not just surface-level digital ads).
+3. Designing an end-to-end, technically feasible AI system that connects speech intelligence, live agentic research, and closed-loop reinforcement learning.
+4. Delivering a working prototype with production-ready execution.
+
+---
+
+## 2. Structure of the 4 Layers
+
+### Layer 1: The 60-Minute NIAT Audit (Hard Filter)
+* **What NIAT Actually Is:** Not an independent college; an on-campus partnership model across 35+ Tier-2/3 universities offering UGC-recognized B.Tech degrees with an industry-run curriculum (AI/ML, Data Science, Full-Stack) replacing outdated syllabi.
+* **Acquisition & Conversion Channels Today:** 
+  - The ₹1,200 NAT (NxtWave Aptitude Test) entrance funnel.
+  - Offline mall visibility (standees and kiosks in Hyderabad hubs like Sarath City Capital Mall, Inorbit).
+  - YouTube educator review breakdowns (e.g., Vedantu JEE walkthroughs of the admission process).
+  - Free weekend AI project bootcamps with gadget giveaways (iPads, smartwatches).
+  - Instagram builder culture (drones, hackathons, student startups) vs. academic lectures.
+  - WhatsApp drip automation and aggressive 1:1 regional sales counselling.
+* **Competitors & What Each Does Better:**
+  - *Scaler School of Technology (SST):* Zero-friction top-of-funnel live masterclasses that build trust before pitching; elite selectivity branding.
+  - *Newton School of Technology (NST):* Showcasing the complete vibrant campus experience (cultural fests, concerts, sports, residential vibe) on social media.
+* **The Hidden Detail:** The ₹1,200 NAT exam is a psychological lead qualifier and psychometric profiler. Out of 82 questions, 44 (>53%) are psychometric questions with no right/wrong answers, zero negative marking, and no cutoff—feeding student personality profiles to sales reps to close the seat reservation fee.
+
+### Layer 2: The Strategy (Selected Track: Track B — Bottom-of-Funnel Lead to Sale)
+* **The Avenue:** The "Call-to-Close RL Sales Engine" — Autonomous speech intelligence, sequential search, and self-optimizing pitch system for NIAT parent counselling calls.
+* **The Problem:** 65%+ drop-off happens on the 40-minute parent call where parents compare NIAT's ₹12L–₹16L fee with local convenor quota colleges (₹3L–₹4L) at the exact same partner campus. BDAs suffer severe cognitive fatigue and lack time or tools to research regional college realities on the fly.
+* **The Solution Architecture:**
+  1. Multimodal Indic STT: Ingests call recordings or voice memos in Telugu, Hindi, Tamil, and English code-mixing.
+  2. 3-Stage Sequential Agentic Search: Extracts parent hesitation $\rightarrow$ Scrapes live competitor reality $\rightarrow$ Pulls grounded NIAT proofs (Year-2 paid internships offsetting fees, UGC Section 2(f) links).
+  3. Contextual Bandit RL Loop: Benchmarks pitch angles (Financial Stipend Offset vs. Peer Proof vs. UGC Security). Seat fee paid = Reward +1 (promotes to "Golden Template"); Lead stalled = Reward 0 (mutates angle).
+  4. Dual-Sided MCP Sync: Delivers battlecards to counsellor's WhatsApp/Telegram and native-language clarity notes to parents.
+* **10-Day Pilot Experiment:** 20 BDAs, 400 calls, randomized within-counsellor interleaving, tracking 7-day seat fee conversion lifts.
+
+### Layer 3: Working Prototype (Full-Stack Implementation in Repo)
+* Frontend: `call-to-close.html` (Glassmorphic audio dropzone, live mic recording, 28-bar equalizer waveform visualizer, policy matrix dashboard).
+* Backend: `server.js` (Express, Multer memory storage, Google Gemini Multimodal integration with cascading fallbacks).
+* RAG & Knowledge: `faq-rag.js` (Grounded institutional vector engine).
+* Telegram Co-Pilot: `telegram-bot.js` (`@rag1729bot` with `/battlecard`, `/policies`, `/win`, `/stall`, and voice note analysis).
+
+### Layer 4: Reflection & Self-Evaluation
+* Honest reflection on operational reality vs. AI wrappers.
+* Candid self-rating (9.2 / 10) detailing completed capabilities and production hardening areas.

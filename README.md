@@ -140,9 +140,24 @@ TELEGRAM_BOT_TOKEN=your_telegram_bot_token_here
 ```
 
 ### 3. Start the Application
+You can run the complete system with 1 command (pre-flight checks, dependency verification, and audio library inspection included):
+
+**Linux / macOS / WSL / Git Bash:**
+```bash
+chmod +x run.sh
+./run.sh
+```
+
+**Windows (PowerShell / Command Prompt):**
+```powershell
+.\run.bat
+```
+
+*Or via npm:*
 ```bash
 npm start
 ```
+
 The server will initialize at `http://localhost:3000`:
 - ⚡ **Track B (Sales Co-Pilot):** [http://localhost:3000/call-to-close.html](http://localhost:3000/call-to-close.html)
 - 🎯 **Track A (Career DNA Engine):** [http://localhost:3000/index.html](http://localhost:3000/index.html)
@@ -168,6 +183,8 @@ This project includes a native [`render.yaml`](render.yaml) blueprint:
 
 ```
 nextwave/
+├── run.sh                      # Automated Linux/macOS/WSL/Git Bash launcher
+├── run.bat                     # Windows native double-click launcher
 ├── Layer1_NIAT_Audit.md        # 60-Minute NIAT Audit & reverse-engineered attribution
 ├── Layer2_Track_B_Strategy.md  # Track B Call-to-Close RL Strategy & 10-day experiment
 ├── Layer2_Track_A_Strategy.md  # Track A Career DNA Assessment Top-of-Funnel Strategy
@@ -183,10 +200,14 @@ nextwave/
 ├── index.html                  # Track A Career DNA assessment web app
 ├── app.js                      # Track A assessment state engine
 ├── style.css                   # Track A styling
-├── samples/                    # Pre-synthesized parent call audio files (.wav)
-│   ├── sample_call_fee_premium.wav
-│   ├── sample_call_batch_track_record.wav
-│   └── sample_call_ugc_validity.wav
+├── samples/                    # Real call recordings & Indic parent objection cases
+│   ├── real_call_billing_support.mp3     # Real 2-way phone call: Wire transfer & fee billing (816KB)
+│   ├── real_call_customer_support.mp3    # Real contact center: Student app setup & account support (1.9MB)
+│   ├── real_call_service_issue.wav       # Real customer call: Program quality & guarantees (669KB)
+│   ├── real_call_telephony_quality.wav   # Telephony 8000Hz acoustic PCM speech sample (375KB)
+│   ├── sample_call_fee_premium.wav       # Mohan Babu Univ 250% fee objection in Telugu/Telugish (1.2MB)
+│   ├── sample_call_batch_track_record.wav# Scaler/Newton brand proof objection in Hindi/Hinglish (905KB)
+│   └── sample_call_ugc_validity.wav      # UGC degree validity & TNPSC/GATE in Tamil/Tanglish (886KB)
 └── .gitignore                  # Git safeguard excluding secrets & node_modules
 ```
 

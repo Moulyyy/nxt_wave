@@ -19,6 +19,34 @@ class TelegramBotService {
         this.pollingTimeout = null;
         this.onCallAnalyzeCallback = null;
         this.onFeedbackCallback = null;
+        this.subscribersFile = path.join(__dirname, 'telegram_subscribers.json');
+        this.subscribers = this.loadSubscribers();
+    }
+
+    loadSubscribers() {
+        try {
+            if (fs.existsSync(this.subscribersFile)) {
+                const list = JSON.parse(fs.readFileSync(this.subscribersFile, 'utf8'));
+                return new Set(list.map(String));
+            }
+        } catch (e) {}
+        return new Set();
+    }
+
+    saveSubscribers() {
+        try {
+            fs.writeFileSync(this.subscribersFile, JSON.stringify([...this.subscribers], null, 2));
+        } catch (e) {}
+    }
+
+    registerSubscriber(chatId, userInfo = {}) {
+        if (!chatId) return;
+        const strId = String(chatId);
+        if (!this.subscribers.has(strId)) {
+            this.subscribers.add(strId);
+            this.saveSubscribers();
+            console.log(`[TELEGRAM SUBSCRIBER] New subscriber registered: ${strId} (${userInfo.first_name || 'User'})`);
+        }
     }
 
     setCallbacks({ onCallAnalyze, onFeedback, getPolicies }) {
@@ -127,6 +155,7 @@ class TelegramBotService {
         if (!message) return;
 
         const chatId = message.chat.id;
+        this.registerSubscriber(chatId, message.from);
         const text = message.text ? message.text.trim() : '';
         const user = message.from?.first_name || 'Friend';
 
@@ -323,12 +352,77 @@ Log: <code>/win</code> or <code>/stall</code>
         }
     }
 
+    // Broadcast AI Generated Script directly to all sales counsellors via Telegram
+    async broadcastSalesScript(scriptData = {}) {
+        if (!this.token) {
+            return { success: false, message: 'Telegram Bot token not configured.' };
+        }
+
+        const targets = new Set(this.subscribers);
+        if (process.env.TELEGRAM_SALES_CHAT_ID) {
+            targets.add(String(process.env.TELEGRAM_SALES_CHAT_ID));
+        }
+
+        if (targets.size === 0) {
+            return {
+                success: false,
+                sentCount: 0,
+                message: 'No active counsellor subscribers yet. Open @' + (this.botInfo?.username || 'rag1729bot') + ' on Telegram and send /start to link your chat.'
+            };
+        }
+
+        const bulletsFormatted = (scriptData.pitchBullets && scriptData.pitchBullets.length > 0)
+            ? scriptData.pitchBullets.map((b, i) => `<b>${i + 1}.</b> ${b}`).join('\n')
+            : '• Grounded objection counter & stipend offset\n• Verified regional alumni proof point';
+
+        const scriptBody = scriptData.verbatimClosingScript || scriptData.closingScript || 'Review closing strategy on web dashboard.';
+
+        const messageText = `
+⚡ <b>AI SALES CLOSING SCRIPT DISPATCHED</b>
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+👤 <b>Lead:</b> ${scriptData.leadName || 'Parent Lead'} | 📍 ${scriptData.studentCity || 'India'}
+⚠️ <b>Primary Friction:</b> ${scriptData.primaryFear || 'Pricing / Brand Hesitation'}
+🎯 <b>Winning Strategy:</b> ${scriptData.activePolicy || 'Angle A'} (${scriptData.policyWinRate || '47.6%'} Win Rate ⭐)
+
+💡 <b>3 Key Talking Points for Call #2:</b>
+${bulletsFormatted}
+
+🎙️ <b>Verbatim Script to Close Seat Reservation Fee:</b>
+<i>"${scriptBody}"</i>
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+<b>Log Closed-Loop RL Lead Outcome:</b>
+• <code>/win ${scriptData.policyId || 'policy_fee_a'}</code> — Seat Fee Paid (+1)
+• <code>/stall ${scriptData.policyId || 'policy_fee_a'}</code> — Lead Stalled (0)
+`;
+
+        const results = [];
+        for (const cid of targets) {
+            try {
+                const res = await this.sendMessage(cid, messageText);
+                results.push({ chatId: cid, success: !!res });
+            } catch (err) {
+                results.push({ chatId: cid, success: false, error: err.message });
+            }
+        }
+
+        const sentCount = results.filter(r => r.success).length;
+        console.log(`[TELEGRAM BROADCAST] Script delivered to ${sentCount}/${targets.size} counsellors.`);
+        return {
+            success: sentCount > 0,
+            sentCount,
+            totalSubscribers: targets.size,
+            results
+        };
+    }
+
     getStatus() {
         return {
             configured: !!this.token,
             isPolling: this.isPolling,
             botUsername: this.botInfo ? `@${this.botInfo.username}` : null,
-            botName: this.botInfo ? this.botInfo.first_name : null
+            botName: this.botInfo ? this.botInfo.first_name : null,
+            subscriberCount: this.subscribers.size
         };
     }
 }

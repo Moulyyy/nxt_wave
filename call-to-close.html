@@ -18,52 +18,44 @@
         <div class="ambient-orb orb-3"></div>
     </div>
 
-    <!-- App Header -->
+    <!-- App Header (Modern Glass) -->
     <header class="app-header">
         <div class="brand-wrapper">
             <div class="brand-logo">⚡</div>
             <div>
-                <h1 class="brand-title">Call-to-Close <span>RL Engine</span></h1>
-                <p class="brand-tagline">Track B • Autonomous Lead-to-Sale Conversion</p>
+                <h1 class="brand-title">Call-to-Close <span class="gradient-text">RL Engine</span></h1>
+                <p class="brand-tagline">Autonomous Admissions Co-Pilot • Track B</p>
             </div>
         </div>
 
-        <!-- Telemetry Summary Badges -->
+        <!-- Sleek Status Telemetry Pills -->
         <div class="header-metrics">
-            <div class="metric-pill">
-                <span class="metric-icon">📈</span>
-                <span class="metric-text"><strong>+22.4%</strong> Conversion Lift</span>
-            </div>
-            <div class="metric-pill">
-                <span class="metric-icon">⚡</span>
-                <span class="metric-text"><strong>2.4 min</strong> Prep Latency</span>
-            </div>
-            <div class="metric-pill" id="aiStatusPill">
+            <div class="metric-pill" id="aiStatusPill" title="Gemini Multimodal Live Reasoning">
                 <span class="live-dot pulse"></span>
-                <span class="metric-text" id="aiStatusText">Gemini Multimodal Active</span>
+                <span class="metric-text" id="aiStatusText">Gemini 3.8 Multimodal</span>
             </div>
-            <div class="metric-pill" id="telegramStatusPill" style="cursor: pointer;" title="Configure Telegram Bot">
-                <span class="live-dot" id="tgLiveDot"></span>
-                <span class="metric-text" id="tgStatusText">Telegram: Setup</span>
+            <div class="metric-pill interactive" id="telegramStatusPill" style="cursor: pointer;" title="Telegram Bot Hub (@rag1729bot)">
+                <span class="live-dot pulse" id="tgLiveDot"></span>
+                <span class="metric-text" id="tgStatusText">Telegram: @rag1729bot</span>
             </div>
         </div>
 
-        <!-- Navigation Actions -->
+        <!-- Glass Navigation Capsule -->
         <nav class="nav-actions">
-            <a href="call-to-close.html" class="nav-link active-tab">Track B: Sales Co-Pilot</a>
+            <a href="call-to-close.html" class="nav-link active-tab">Track B: Co-Pilot</a>
             <a href="index.html" class="nav-link">Track A: Career DNA</a>
         </nav>
     </header>
 
     <!-- Main Workspace -->
     <main class="main-wrapper">
-        <!-- Alert Notification Bar -->
+        <!-- Floating Glass Intelligence Notification -->
         <div class="alert-banner" id="alertBanner">
             <div class="alert-content">
-                <span class="alert-icon">🔥</span>
-                <span id="alertMessageText">New Golden Script Promoted! Angle A just closed a Telugu parent with a High-Fee objection.</span>
+                <span class="alert-icon">✨</span>
+                <span id="alertMessageText">Reinforced Policy Active: Angle A closed parent with High-Fee objection.</span>
             </div>
-            <button class="alert-close" onclick="document.getElementById('alertBanner').classList.remove('active')">&times;</button>
+            <button class="alert-close" onclick="document.getElementById('alertBanner').classList.remove('active')" aria-label="Dismiss alert">&times;</button>
         </div>
 
         <!-- 2-Column High-Clarity Workspace Grid -->
@@ -73,26 +65,51 @@
             <section class="panel panel-left">
                 <div class="panel-header">
                     <div class="panel-title-group">
-                        <span class="panel-icon">🎙️</span>
+                        <div class="panel-badge-icon">🎙️</div>
                         <div>
-                            <h2 class="panel-title">Parent Call Intake</h2>
-                            <p class="panel-desc">Speaker diarized recording & live transcription</p>
+                            <h2 class="panel-title">Call Audio Intake</h2>
+                            <p class="panel-desc">Real-time speaker diarization & transcription</p>
                         </div>
                     </div>
-                    <button class="btn-secondary-action" id="btnOpenIngestModal" title="Ingest custom call or record via microphone">
-                        <span>➕ Custom Call / Mic</span>
+                    <button class="btn-glass-chip" id="btnOpenIngestModal" title="Manual text transcript or live microphone speech">
+                        <span>➕ Mic / Text</span>
                     </button>
                 </div>
 
-                <!-- Audio Testing & Upload Utility Bar -->
-                <div class="audio-action-bar">
-                    <button type="button" class="btn-audio-util" id="btnOpenDownloadModal" title="Download genuine sample voice recordings for testing">
-                        <span>⬇️ Download Sample Audio</span>
-                    </button>
-                    <button type="button" class="btn-audio-util btn-upload-util" id="btnUploadAudioTrigger" title="Upload your voice recording (.wav, .mp3, .m4a)">
-                        <span>📤 Upload Voice (.wav/.mp3)</span>
-                    </button>
+                <!-- Modern Glass Audio Upload Dropzone -->
+                <div class="audio-dropzone" id="audioDropzone" role="button" tabindex="0" title="Click or drag local audio to upload & analyze">
                     <input type="file" id="audioFileInput" accept="audio/*,.wav,.mp3,.m4a,.webm,.ogg" style="display: none;">
+                    <div class="dropzone-glow"></div>
+                    <div class="dropzone-inner">
+                        <div class="dropzone-icon-circle">
+                            <span class="dropzone-icon">📤</span>
+                        </div>
+                        <div class="dropzone-text-group">
+                            <span class="dropzone-title">Upload Audio for Real-Time Analysis</span>
+                            <span class="dropzone-sub">Drop <code>.wav</code> / <code>.mp3</code> here or <span class="dropzone-highlight">browse files</span></span>
+                        </div>
+                    </div>
+                    <div class="dropzone-sample-hint">
+                        <span class="hint-dot"></span>
+                        <span>Sample audios are in your local <code>samples/</code> folder</span>
+                    </div>
+                </div>
+
+                <!-- Real Audio Quick-Download Pills -->
+                <div class="audio-quick-pills">
+                    <span class="pills-label">⬇️ Download Real Call Audio Files to Test Dropzone:</span>
+                    <a href="/samples/real_call_billing_support.mp3" download class="audio-pill-chip" title="Real 2-way call: Tuition wire transfer & bank support (MP3, 816KB)">
+                        <span>📞 Real Billing Call (.mp3)</span>
+                    </a>
+                    <a href="/samples/real_call_customer_support.mp3" download class="audio-pill-chip" title="Real contact center call: App onboarding & withdrawal support (MP3, 1.9MB)">
+                        <span>🎧 Real Support Call (.mp3)</span>
+                    </a>
+                    <a href="/samples/real_call_service_issue.wav" download class="audio-pill-chip" title="Real customer call: Quality standards & replacement inquiry (WAV, 669KB)">
+                        <span>🎙️ Real Service Call (.wav)</span>
+                    </a>
+                    <a href="/samples/sample_call_fee_premium.wav" download class="audio-pill-chip" title="NIAT Case 1: Mohan Babu Univ 250% Fee Premium (WAV, 1.2MB)">
+                        <span>🇮🇳 NIAT Fee Case (.wav)</span>
+                    </a>
                 </div>
 
                 <!-- Upload In-Progress State -->
@@ -106,7 +123,10 @@
 
                 <!-- Call Selector & Lead Metadata -->
                 <div class="lead-selector-card">
-                    <label class="field-label" for="callSelector">Active Call Recording</label>
+                    <div class="selector-header-row">
+                        <label class="field-label" for="callSelector">Active Call Recording</label>
+                        <span class="selector-count-badge">Code-Mixed Telugish/Hinglish/Tamil</span>
+                    </div>
                     <select id="callSelector" class="call-dropdown" aria-label="Select call recording">
                         <!-- Populated by JS -->
                     </select>
@@ -118,7 +138,7 @@
                     </div>
                 </div>
 
-                <!-- Audio Waveform Player -->
+                <!-- Glass Audio Waveform Player -->
                 <div class="audio-player-card">
                     <div class="audio-main-row">
                         <button class="btn-play-circle" id="btnPlayAudio" aria-label="Play audio">▶</button>
@@ -145,6 +165,7 @@
 
                 <!-- Primary Action CTA -->
                 <button class="btn-primary-cta" id="btnRunAgent">
+                    <span class="btn-shine"></span>
                     <span class="btn-icon">⚡</span>
                     <span class="btn-label" id="btnAgentLabel">Run AI Intelligence & Generate Pitch</span>
                 </button>
@@ -234,7 +255,10 @@
                         <div class="verbatim-card">
                             <div class="verbatim-top">
                                 <span class="verbatim-label">Verbatim Spoken Closing Pitch</span>
-                                <div style="display: flex; gap: 8px;">
+                                <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                                    <button class="btn-copy-chip btn-tg-chip" id="btnSendScriptTelegram" title="Send closing script to sales rep on Telegram (@rag1729bot)">
+                                        <span>📱 Send to Telegram</span>
+                                    </button>
                                     <button class="btn-copy-chip" id="btnExportBattlecard" title="Export battlecard as markdown file">
                                         <span>📄 Export Dossier</span>
                                     </button>
@@ -560,71 +584,44 @@
         </div>
     </div>
 
-    <!-- Modal 2: Download Sample Voice Recordings -->
-    <div class="modal-backdrop" id="modalDownloadSamples">
-        <div class="modal-card">
-            <div class="modal-header">
-                <div>
-                    <h3 class="modal-title"><span>⬇️</span> Download Sample Voice Recordings</h3>
-                    <p class="modal-sub">Real audio recordings of parent-counsellor calls for testing offline or upload</p>
-                </div>
-                <button class="modal-close-btn" id="btnCloseDownloadModal">&times;</button>
-            </div>
-
-            <div class="modal-body">
-                <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 14px;">
-                    Download any of these pre-synthesized parent call audio files to your computer, then use the <strong>Upload Voice</strong> button to test Gemini's live speech-to-text diarization and sales pitch generation.
-                </p>
-
-                <div class="samples-grid" id="sampleFilesContainer">
-                    <!-- Populated by JS -->
-                </div>
-            </div>
-
-            <div class="modal-footer">
-                <button type="button" class="btn-cancel" id="btnCloseDownloadModalBtn">Close</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal 3: Telegram Bot Integration & Config -->
+    <!-- Modal 2: Telegram Bot Integration & Hub -->
     <div class="modal-backdrop" id="modalTelegramConfig">
         <div class="modal-card">
             <div class="modal-header">
                 <div>
-                    <h3 class="modal-title"><span>🤖</span> Telegram Bot Integration (Counsellor & Parent Hub)</h3>
-                    <p class="modal-sub">Connect your Telegram bot to receive real-time battlecards and answer parent FAQs</p>
+                    <h3 class="modal-title"><span>🤖</span> Telegram Bot Hub (@rag1729bot)</h3>
+                    <p class="modal-sub">Real-time counsellor battlecards, audio intake, and grounded FAQ RAG</p>
                 </div>
                 <button class="modal-close-btn" id="btnCloseTelegramModal">&times;</button>
             </div>
 
             <div class="modal-body">
-                <div class="tg-guide-box">
-                    <strong>⚡ How to get a Telegram Bot Token in 30 Seconds:</strong>
-                    <ol>
-                        <li>Open Telegram and search for <code>@BotFather</code>.</li>
-                        <li>Send <code>/newbot</code>, choose a display name and username (e.g. <code>my_niat_bot</code>).</li>
-                        <li>Copy the HTTP API token string provided and paste it below.</li>
-                    </ol>
+                <!-- Live Connection Badge -->
+                <div class="tg-connected-box">
+                    <div class="tg-connected-header">
+                        <span class="live-dot pulse"></span>
+                        <span class="tg-bot-title">Connected as <strong>@rag1729bot</strong> (nextwave)</span>
+                    </div>
+                    <p class="tg-bot-sub">Bot is active and long-polling. Counsellors can forward parent voice notes directly on Telegram for real-time transcription and battlecards.</p>
                 </div>
 
-                <div class="form-group">
-                    <label class="field-label" for="inpTelegramToken">Telegram Bot Token</label>
-                    <input type="text" id="inpTelegramToken" class="form-input" placeholder="e.g. 1234567890:ABCdefGHIjklMNOpqrsTUVwxyz">
+                <div class="form-group" style="margin-top: 14px;">
+                    <label class="field-label" for="inpTelegramToken">Telegram Bot Token (Saved in Environment)</label>
+                    <input type="text" id="inpTelegramToken" class="form-input" value="8725413095:AAFtaGTsCo4E1seURgAYPdBMj-HR5YPIwuI" placeholder="e.g. 1234567890:ABCdefGHIjklMNOpqrsTUVwxyz">
                 </div>
 
                 <div style="display: flex; gap: 8px; margin-top: 10px;">
                     <button type="button" class="btn-submit" id="btnConnectTelegram" style="flex: 1;">
-                        <span>🚀 Connect & Activate Bot</span>
+                        <span>⚡ Refresh Bot Connection</span>
                     </button>
                 </div>
 
                 <div class="form-group" style="margin-top: 16px;">
-                    <label class="field-label" for="inpTelegramChatId">Send Test Notification (Optional)</label>
+                    <label class="field-label" for="inpTelegramChatId">Send Test Notification</label>
                     <div style="display: flex; gap: 8px;">
                         <input type="text" id="inpTelegramChatId" class="form-input" placeholder="Your Telegram Chat ID (e.g. 12345678)">
                         <button type="button" class="btn-secondary-action" id="btnSendTgTest" style="white-space: nowrap;">
-                            <span>Send Test</span>
+                            <span>Send Test Alert</span>
                         </button>
                     </div>
                 </div>

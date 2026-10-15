@@ -23,11 +23,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     initIngestModal();
     initTelemetryModal();
     initAudioUpload();
-    initSampleDownloadsModal();
     initTelegramModal();
     initFaqRag();
     initBattlecardExport();
 });
+
 
 // Initialize Clean Segmented Tabs (Battlecard vs Parent Note vs RL Engine)
 function initTabs() {
@@ -335,9 +335,66 @@ function setupEventListeners() {
             copyTextToClipboard(text, 'Parent WhatsApp Note copied to clipboard!');
         });
     }
+
+    // Send Script to Telegram Button
+    const btnSendTg = document.getElementById('btnSendScriptTelegram');
+    if (btnSendTg) {
+        btnSendTg.addEventListener('click', sendScriptToTelegram);
+    }
 }
 
-// Audio Player Simulation with Synchronized Bubble Highlighting & Web Speech
+// Dispatch AI Closing Script to Sales Rep via Telegram
+async function sendScriptToTelegram() {
+    const btnSendTg = document.getElementById('btnSendScriptTelegram');
+    const verbatimScript = document.getElementById('bcVerbatimScript')?.textContent?.trim();
+    if (!verbatimScript) {
+        showToast('No active closing script to send.', 'warning');
+        return;
+    }
+
+    if (btnSendTg) {
+        btnSendTg.disabled = true;
+        btnSendTg.textContent = '⏳ Sending...';
+    }
+
+    try {
+        const payload = {
+            leadName: currentCall?.leadName || 'Parent Lead',
+            studentCity: currentCall?.studentCity || 'India',
+            primaryFear: document.getElementById('bcPrimaryFear')?.textContent || 'Fee & Value Skepticism',
+            activePolicy: currentPolicy?.angleName || document.getElementById('bcPolicyBadge')?.textContent || 'Angle A: Financial Stipend Offset',
+            policyWinRate: currentPolicy ? `${currentPolicy.winRate}%` : '47.6%',
+            policyId: currentPolicy?.id || 'policy_fee_a',
+            verbatimClosingScript: verbatimScript,
+            pitchBullets: Array.from(document.querySelectorAll('#bcBulletsList li')).map(li => li.textContent.trim())
+        };
+
+        const res = await fetch('/api/telegram/broadcast-script', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        });
+
+        const data = await res.json();
+        if (data.success) {
+            showToast(`🚀 Script sent to ${data.sentCount} salesperson chat(s) on Telegram!`, 'success');
+        } else {
+            showToast(data.message || 'Link Telegram bot (@rag1729bot) first with /start.', 'info');
+        }
+    } catch (err) {
+        console.error('Telegram dispatch error:', err);
+        showToast('Network error while dispatching to Telegram.', 'error');
+    } finally {
+        if (btnSendTg) {
+            btnSendTg.disabled = false;
+            btnSendTg.innerHTML = '<span>📱 Send to Telegram</span>';
+        }
+    }
+}
+
+let activeAudioElement = null;
+
+// Audio Player Simulation with Real HTML5 Audio & Synchronized Bubble Highlighting
 function toggleAudio() {
     const playBtn = document.getElementById('btnPlayAudio');
     const waveBars = document.querySelectorAll('.wave-bar');
@@ -345,6 +402,9 @@ function toggleAudio() {
     if (isPlayingAudio) {
         isPlayingAudio = false;
         clearInterval(audioTimer);
+        if (activeAudioElement) {
+            activeAudioElement.pause();
+        }
         if ('speechSynthesis' in window) window.speechSynthesis.cancel();
         playBtn.innerHTML = '▶';
         waveBars.forEach(b => b.classList.remove('active'));
@@ -353,21 +413,42 @@ function toggleAudio() {
         isPlayingAudio = true;
         playBtn.innerHTML = '⏸';
         
+        // Play actual audio recording if available
+        if (currentCall && currentCall.audioSimUrl) {
+            try {
+                if (!activeAudioElement || !activeAudioElement.src.includes(currentCall.audioSimUrl)) {
+                    if (activeAudioElement) activeAudioElement.pause();
+                    activeAudioElement = new Audio(currentCall.audioSimUrl);
+                    activeAudioElement.onended = () => resetAudio();
+                }
+                activeAudioElement.play().catch(e => {
+                    console.log('Real audio play deferred, running voice sync:', e.message);
+                    playBubbleSequence(0);
+                });
+            } catch (err) {
+                console.log('Audio init fallback:', err);
+                playBubbleSequence(0);
+            }
+        } else {
+            playBubbleSequence(0);
+        }
+        
         audioTimer = setInterval(() => {
             audioElapsedSeconds++;
+            if (activeAudioElement && !isNaN(activeAudioElement.currentTime)) {
+                audioElapsedSeconds = Math.floor(activeAudioElement.currentTime);
+            }
             const mins = String(Math.floor(audioElapsedSeconds / 60)).padStart(2, '0');
             const secs = String(audioElapsedSeconds % 60).padStart(2, '0');
-            const total = currentCall ? currentCall.duration : '18:42';
+            const total = currentCall ? currentCall.duration : '01:45';
             document.getElementById('audioDuration').textContent = `${mins}:${secs} / ${total}`;
             
             // Animate wave bars
             waveBars.forEach(b => {
                 b.style.height = `${Math.floor(Math.random() * 70) + 15}%`;
-                b.classList.toggle('active', Math.random() > 0.5);
+                b.classList.toggle('active', Math.random() > 0.4);
             });
         }, 1000);
-
-        playBubbleSequence(0);
     }
 }
 
@@ -412,6 +493,10 @@ function playBubbleSequence(index) {
 function resetAudio() {
     isPlayingAudio = false;
     clearInterval(audioTimer);
+    if (activeAudioElement) {
+        activeAudioElement.pause();
+        activeAudioElement.currentTime = 0;
+    }
     if ('speechSynthesis' in window) window.speechSynthesis.cancel();
     audioElapsedSeconds = 0;
     const playBtn = document.getElementById('btnPlayAudio');
@@ -792,21 +877,62 @@ function showToast(message, type = 'info') {
     }, 4500);
 }
 
-// ===== Audio File Upload Implementation =====
+// ===== Audio File Upload Implementation (Real-Time Gemini Multimodal) =====
 function initAudioUpload() {
+    const dropzone = document.getElementById('audioDropzone');
     const triggerBtn = document.getElementById('btnUploadAudioTrigger');
     const fileInput = document.getElementById('audioFileInput');
     const progressCard = document.getElementById('uploadProgressCard');
     const progressText = document.getElementById('uploadProgressText');
 
-    if (!triggerBtn || !fileInput) return;
+    if (!fileInput) return;
 
-    triggerBtn.addEventListener('click', () => {
-        fileInput.click();
+    // Trigger file chooser on dropzone click
+    if (dropzone) {
+        dropzone.addEventListener('click', (e) => {
+            // Prevent re-triggering if the file input was clicked
+            if (e.target !== fileInput) {
+                fileInput.click();
+            }
+        });
+
+        // Drag & drop handlers with modern visual feedback
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropzone.addEventListener(eventName, (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                dropzone.classList.add('drag-over');
+            });
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropzone.addEventListener(eventName, (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                dropzone.classList.remove('drag-over');
+            });
+        });
+
+        dropzone.addEventListener('drop', (e) => {
+            const files = e.dataTransfer?.files;
+            if (files && files.length > 0) {
+                handleAudioFile(files[0]);
+            }
+        });
+    }
+
+    if (triggerBtn) {
+        triggerBtn.addEventListener('click', () => fileInput.click());
+    }
+
+    fileInput.addEventListener('change', (e) => {
+        const file = e.target.files?.[0];
+        if (file) {
+            handleAudioFile(file);
+        }
     });
 
-    fileInput.addEventListener('change', async (e) => {
-        const file = e.target.files?.[0];
+    async function handleAudioFile(file) {
         if (!file) return;
 
         if (file.size > 25 * 1024 * 1024) {
@@ -816,7 +942,9 @@ function initAudioUpload() {
 
         if (progressCard) {
             progressCard.style.display = 'block';
-            if (progressText) progressText.textContent = `Uploading ${file.name} (${(file.size / 1024).toFixed(0)} KB) & transcribing with Gemini Multimodal AI...`;
+            if (progressText) {
+                progressText.textContent = `Uploading ${file.name} (${(file.size / 1024).toFixed(0)} KB) & transcribing with Gemini Multimodal AI...`;
+            }
         }
 
         try {
@@ -850,69 +978,9 @@ function initAudioUpload() {
             if (progressCard) progressCard.style.display = 'none';
             fileInput.value = '';
         }
-    });
+    }
 }
 
-// ===== Download Sample Voice Recordings Modal =====
-function initSampleDownloadsModal() {
-    const openBtn = document.getElementById('btnOpenDownloadModal');
-    const modal = document.getElementById('modalDownloadSamples');
-    const closeBtn = document.getElementById('btnCloseDownloadModal');
-    const closeBtn2 = document.getElementById('btnCloseDownloadModalBtn');
-    const container = document.getElementById('sampleFilesContainer');
-
-    if (!modal) return;
-
-    const closeModal = () => modal.classList.remove('active');
-    const openModal = async () => {
-        modal.classList.add('active');
-        if (container) {
-            container.innerHTML = '<div style="color: var(--text-muted); font-size: 0.8rem;">Loading sample recordings...</div>';
-            try {
-                const res = await fetch('/api/samples/list');
-                const data = await res.json();
-                if (data.success && data.samples) {
-                    renderSampleFileList(data.samples, container);
-                }
-            } catch (err) {
-                container.innerHTML = '<div style="color: var(--accent-rose); font-size: 0.8rem;">Failed to load sample list.</div>';
-            }
-        }
-    };
-
-    if (openBtn) openBtn.addEventListener('click', openModal);
-    if (closeBtn) closeBtn.addEventListener('click', closeModal);
-    if (closeBtn2) closeBtn2.addEventListener('click', closeModal);
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) closeModal();
-    });
-}
-
-function renderSampleFileList(samples, container) {
-    container.innerHTML = '';
-    samples.forEach(s => {
-        const card = document.createElement('div');
-        card.className = 'sample-file-card';
-        card.innerHTML = `
-            <div class="sample-file-info">
-                <div class="sample-file-title">
-                    <span>🎙️</span>
-                    <span>${s.title}</span>
-                </div>
-                <div class="sample-file-desc">${s.description}</div>
-                <div class="sample-meta-row">
-                    <span class="sample-meta-tag">Duration: ${s.duration}</span>
-                    <span class="sample-meta-tag">Size: ${s.sizeKb} KB</span>
-                    <span class="sample-meta-tag">Format: WAV (PCM)</span>
-                </div>
-            </div>
-            <a href="${s.downloadUrl}" download="${s.filename}" class="btn-download-wav">
-                <span>⬇️ Download WAV</span>
-            </a>
-        `;
-        container.appendChild(card);
-    });
-}
 
 // ===== Telegram Bot Configuration Modal =====
 function initTelegramModal() {

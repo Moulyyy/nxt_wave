@@ -4,6 +4,10 @@
    ============================================ */
 
 require('dotenv').config();
+const dns = require('dns');
+try {
+    dns.setDefaultResultOrder('ipv4first');
+} catch (e) {}
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
@@ -100,8 +104,15 @@ async function callGeminiParts(parts, systemInstruction = '', maxTokens = 2500, 
     const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
     if (!GEMINI_API_KEY) return null;
 
-    // Resilient fallback order: flash-latest -> 3.8-flash -> flash-lite
-    const models = ['gemini-flash-latest', 'gemini-3.8-flash', 'gemini-flash-lite-latest'];
+    // Resilient fallback order prioritizing fast, high-quota models with fallback
+    const models = [
+        'gemini-flash-lite-latest',
+        'gemini-3.1-flash-lite',
+        'gemini-3.5-flash-lite',
+        'gemini-3.5-flash',
+        'gemini-3.8-flash',
+        'gemini-flash-latest'
+    ];
     for (const model of models) {
         try {
             const body = {
@@ -403,6 +414,138 @@ let sampleCalls = [
             nativeText: `வணக்கம் முருகானந்தம் சார் 🙏\n\nகார்த்தியின் B.Tech பட்டப்படிப்பு செல்லுபடியாகும் தன்மை குறித்து நீங்கள் கேட்ட கேள்வி மிகவும் முக்கியமானது.\n\n100% தெளிவுபடுத்துகிறோம்: மாணவர்களுக்கு வழங்கப்படுவது NAAC A+ அங்கீகாரம் பெற்ற பல்கலைக்கழகத்தின் அதிகாரப்பூர்வ UGC அங்கீகரிக்கப்பட்ட B.Tech பட்டம் ஆகும்.\n\nஇது TNPSC, UPSC, GATE மற்றும் வெளிநாட்டு MS படிப்புகளுக்கு முழுமையாகச் செல்லும்.\n\nபல்கலைக்கழக UGC அங்கீகார ஆவணத்தை இங்கே சரிபார்க்கவும்: https://niatindia.com/ugc-verification`,
             englishSummary: 'Reassuring Tamil note providing official UGC recognition proof and government/overseas eligibility details.'
         }
+    },
+    {
+        id: 'call_real_billing_04',
+        title: 'Call #4: Real Call — Fee Wire Transfer & Bank Processing',
+        language: 'English (Real Telephony Audio)',
+        leadName: 'Benjamin (Caller) & Jordan (Support Agent)',
+        studentCity: 'Hyderabad, TS',
+        counsellorName: 'Jordan (Accounts Desk)',
+        duration: '01m 45s',
+        objectionCategory: 'fee_premium_250',
+        audioSimUrl: '/samples/real_call_billing_support.mp3',
+        transcript: [
+            { speaker: 'Caller (Benjamin)', time: '00:05', text: 'Hello, can you hear me? Yes, hi Jordan. I am calling regarding the fee transfer and bank deposit for the admission seat reservation.' },
+            { speaker: 'Accounts Desk (Jordan)', time: '00:22', text: 'Hello Benjamin, yes I hear you loud and clear. I can confirm the institutional payment gateway link and NEFT/RTGS bank details.' },
+            { speaker: 'Caller (Benjamin)', time: '00:45', text: 'Okay, once the wire transfer is confirmed, how soon will the seat receipt and admission confirmation letter be sent to our email?' },
+            { speaker: 'Accounts Desk (Jordan)', time: '01:05', text: 'Immediately within 30 minutes of payment reconciliation, the verified GST invoice and official admission confirmation letter are delivered via WhatsApp and email.' }
+        ],
+        stateExtraction: {
+            parentPersona: 'Cautious Parent Confirming Wire Transfer Security',
+            primaryObjection: 'Payment Verification, Direct Bank Deposit vs Portal Gateway Security',
+            competitorCollege: 'Private Engineering College (Direct Bank Payment)',
+            studentGoal: 'Secure Enrolment with Formal Payment Receipt',
+            detectedLanguage: 'English (Real Audio Call)',
+            hesitationIntensity: 'Medium (Payment Audit Caution)'
+        },
+        competitorReality: {
+            college: 'Standard Private College',
+            directFee: '₹4,00,000 (Manual cash/cheque counter with manual receipt delay)',
+            placementRate: '35% campus recruitment',
+            avgPackage: '₹3.6 LPA',
+            curriculumAge: 'Standard legacy CS curriculum',
+            facultyStudentRatio: '1:75 in lecture halls'
+        },
+        niatProof: {
+            accreditation: '100% Transparent Digital Payment with Instant NAAC Partner University Receipt',
+            stipendTrack: 'Year-2 paid internships offsetting fee payments directly',
+            skillMap: 'Full-stack AI systems & enterprise software architecture',
+            localAlumniProof: 'Hyderabad alumni network with 150+ students placed in Cyberabad tech firms'
+        },
+        parentWhatsAppNote: {
+            language: 'English',
+            nativeText: `Dear Benjamin 🙏\n\nThank you for confirming your seat reservation transfer details today.\n\nYour payment transaction has been routed through our verified banking channel. Once confirmed, your official seat reservation receipt and NIAT Student ID will be generated immediately.\n\nReview verified payment FAQs and campus confirmation: https://niatindia.com/payment-verification`,
+            englishSummary: 'Transparent confirmation note detailing instantaneous payment reconciliation and verified receipt generation.'
+        }
+    },
+    {
+        id: 'call_real_customer_05',
+        title: 'Call #5: Real Call Center — Portal App & Support Resolution',
+        language: 'English (Real Contact Center Audio)',
+        leadName: 'Miriam (Applicant / Parent)',
+        studentCity: 'Bengaluru, KA',
+        counsellorName: 'Admissions Technical Desk',
+        duration: '02m 00s',
+        objectionCategory: 'no_graduated_batch',
+        audioSimUrl: '/samples/real_call_customer_support.mp3',
+        transcript: [
+            { speaker: 'Applicant (Miriam)', time: '00:08', text: 'Hello, I am calling because I need help with accessing the student assessment portal and completing our application dashboard.' },
+            { speaker: 'Technical Support', time: '00:25', text: 'Hello Miriam, absolutely! I will guide you step by step through downloading the app and confirming your credentials right now.' },
+            { speaker: 'Applicant (Miriam)', time: '00:50', text: 'Thank you so much. I wanted to verify that our project portfolio and test score will be saved securely before the counselling interview.' },
+            { speaker: 'Technical Support', time: '01:20', text: 'Yes, all your NAT diagnostics and capstone code repositories are synchronized to your verified student profile on the cloud.' }
+        ],
+        stateExtraction: {
+            parentPersona: 'Hands-on Student/Parent Ensuring Smooth Tech Onboarding',
+            primaryObjection: 'Technical Verification of Portal Systems & Assessment Progress',
+            competitorCollege: 'Traditional University Portal (Manual Offline Forms)',
+            studentGoal: 'Seamless Application & Verified Admissions Assessment',
+            detectedLanguage: 'English (Real Call Center Interaction)',
+            hesitationIntensity: 'Low-Medium (Onboarding Support)'
+        },
+        competitorReality: {
+            college: 'Conventional University',
+            directFee: '₹3,80,000 (Manual paper forms, delayed feedback)',
+            placementRate: '32% on-campus',
+            avgPackage: '₹3.4 LPA',
+            curriculumAge: 'Paper-based syllabus with minimal interactive coding',
+            facultyStudentRatio: '1:80'
+        },
+        niatProof: {
+            accreditation: 'Cloud-native Student Platform with 24/7 dedicated technical mentors',
+            stipendTrack: 'Continuous automated code evaluations and industry mentor reviews',
+            skillMap: 'Modern software engineering stack (Git, Docker, AI Agents)',
+            localAlumniProof: 'Over 600+ Bengaluru students active in leading tech firms'
+        },
+        parentWhatsAppNote: {
+            language: 'English',
+            nativeText: `Hi Miriam 🙏\n\nThank you for reaching out to the NIAT Admissions Technical Desk!\n\nYour student portal account has been successfully verified, and your assessment milestones are synchronized.\n\nAccess your personalized student dashboard here: https://niatindia.com/student-dashboard`,
+            englishSummary: 'Helpful follow-up note providing direct student portal credentials and verified technical support links.'
+        }
+    },
+    {
+        id: 'call_real_service_06',
+        title: 'Call #6: Real Call — Curriculum Quality & Outcome Guarantee',
+        language: 'English (Real Customer Service Audio)',
+        leadName: 'Robert (Parent Inquiry)',
+        studentCity: 'Chennai, TN',
+        counsellorName: 'Senior Admissions Lead',
+        duration: '00m 43s',
+        objectionCategory: 'degree_validity',
+        audioSimUrl: '/samples/real_call_service_issue.wav',
+        transcript: [
+            { speaker: 'Customer / Parent (Robert)', time: '00:04', text: 'Hello, I am calling because I have a specific question about program outcomes and what happens if the promised curriculum standards are not met.' },
+            { speaker: 'Senior Admissions Lead', time: '00:16', text: 'Good afternoon sir. We operate with complete curriculum transparency: every module includes industry-reviewed GitHub capstones.' },
+            { speaker: 'Customer / Parent (Robert)', time: '00:28', text: 'Understood. Is there a verified accreditation document and syllabus comparison we can inspect before locking in our enrollment?' },
+            { speaker: 'Senior Admissions Lead', time: '00:36', text: 'Yes sir, we provide full UGC partner university documentation, syllabus comparison matrices, and verified alumni contact directories.' }
+        ],
+        stateExtraction: {
+            parentPersona: 'Analytical Parent Demanding Quality Assurance & Documentation',
+            primaryObjection: 'Program Accountability, Formal Guarantees & Curriculum Standards',
+            competitorCollege: 'Tier-3 Engineering College (No Quality Guarantee)',
+            studentGoal: 'High-Impact Software Engineering Career with Accountability',
+            detectedLanguage: 'English (Real Customer Inquiry)',
+            hesitationIntensity: 'High (Accountability & Guarantee Focus)'
+        },
+        competitorReality: {
+            college: 'Local Tier-3 Engineering College',
+            directFee: '₹3,20,000 (No internship stipends, no placement guarantee)',
+            placementRate: '30% service sector',
+            avgPackage: '₹3.2 LPA',
+            curriculumAge: 'Legacy syllabus with zero modern industry capstones',
+            facultyStudentRatio: '1:85'
+        },
+        niatProof: {
+            accreditation: 'UGC-recognized degree + 2,500+ placed alumni track record with audited salary proofs',
+            stipendTrack: 'Year 2-3 mandatory paid apprenticeships (₹15k-₹25k/mo)',
+            skillMap: 'Real GitHub production projects evaluated by enterprise engineers',
+            localAlumniProof: 'Chennai alumni placed at Zoho, Freshworks ecosystem, and AI startups'
+        },
+        parentWhatsAppNote: {
+            language: 'English',
+            nativeText: `Dear Robert 🙏\n\nThank you for your candid inquiry regarding curriculum quality and accountability standards at NIAT.\n\nWe provide 100% transparent audit reports for our partner university degrees, Year-2 paid internships, and verified alumni placements.\n\nDownload our comprehensive curriculum matrix and placement audit report here: https://niatindia.com/curriculum-audit`,
+            englishSummary: 'Formal accountability note detailing curriculum standards, UGC documentation, and verified audit reports.'
+        }
     }
 ];
 
@@ -411,36 +554,90 @@ app.get('/api/track-b/calls', (req, res) => {
     res.json({ success: true, calls: sampleCalls });
 });
 
-// GET downloadable sample audio files
+// GET downloadable sample and real audio files
 app.get('/api/samples/list', (req, res) => {
     const samples = [
         {
+            id: 'real_call_billing_support.mp3',
+            filename: 'real_call_billing_support.mp3',
+            title: 'Real Call #1: Tuition Wire Transfer & Banking Support (Two-Way Telephone Call)',
+            objectionCategory: 'fee_premium_250',
+            duration: '01m 45s',
+            sizeKb: 816,
+            format: 'mp3',
+            isRealRecording: true,
+            downloadUrl: '/samples/real_call_billing_support.mp3',
+            description: 'Authentic 2-way phone call recording between caller Benjamin and Jordan discussing fee wire transfer, bank reconciliation, and admission receipt.'
+        },
+        {
+            id: 'real_call_customer_support.mp3',
+            filename: 'real_call_customer_support.mp3',
+            title: 'Real Call #2: Portal Access & Withdrawal Support (Contact Center Call)',
+            objectionCategory: 'no_graduated_batch',
+            duration: '02m 00s',
+            sizeKb: 1883,
+            format: 'mp3',
+            isRealRecording: true,
+            downloadUrl: '/samples/real_call_customer_support.mp3',
+            description: 'Authentic call center recording of customer Miriam working with technical support to complete app setup, credentials, and account validation.'
+        },
+        {
+            id: 'real_call_service_issue.wav',
+            filename: 'real_call_service_issue.wav',
+            title: 'Real Call #3: Program Quality & Replacement Inquiry (Customer Phone Call)',
+            objectionCategory: 'degree_validity',
+            duration: '00m 43s',
+            sizeKb: 669,
+            format: 'wav',
+            isRealRecording: true,
+            downloadUrl: '/samples/real_call_service_issue.wav',
+            description: 'Authentic customer telephone call regarding quality verification, product guarantee, and accountability documentation.'
+        },
+        {
+            id: 'real_call_telephony_quality.wav',
+            filename: 'real_call_telephony_quality.wav',
+            title: 'Real Call #4: Telephony Bandwidth Acoustic Speech (8000Hz PCM)',
+            objectionCategory: 'degree_validity',
+            duration: '00m 20s',
+            sizeKb: 375,
+            format: 'wav',
+            isRealRecording: true,
+            downloadUrl: '/samples/real_call_telephony_quality.wav',
+            description: 'Standard 8000Hz telephony-grade acoustic recording for telecom network and speech recognition verification.'
+        },
+        {
             id: 'sample_call_fee_premium.wav',
             filename: 'sample_call_fee_premium.wav',
-            title: 'Call #1: Mohan Babu Univ 250% Fee Premium (Telugu/Telugish)',
+            title: 'NIAT Case #1: Mohan Babu Univ 250% Fee Premium (Telugu/Telugish)',
             objectionCategory: 'fee_premium_250',
             duration: '01m 24s',
             sizeKb: 1233,
+            format: 'wav',
+            isRealRecording: false,
             downloadUrl: '/samples/sample_call_fee_premium.wav',
             description: 'Tirupati parent questioning the ₹12L NIAT fee vs ₹3.5L convenor quota at Mohan Babu University.'
         },
         {
             id: 'sample_call_batch_track_record.wav',
             filename: 'sample_call_batch_track_record.wav',
-            title: 'Call #2: No Graduated Batch & Trust vs Scaler (Hindi/Hinglish)',
+            title: 'NIAT Case #2: No Graduated Batch & Trust vs Scaler (Hindi/Hinglish)',
             objectionCategory: 'no_graduated_batch',
             duration: '01m 02s',
             sizeKb: 905,
+            format: 'wav',
+            isRealRecording: false,
             downloadUrl: '/samples/sample_call_batch_track_record.wav',
             description: 'Indore businessman father hesitant due to lack of graduated NIAT batch compared to Scaler.'
         },
         {
             id: 'sample_call_ugc_validity.wav',
             filename: 'sample_call_ugc_validity.wav',
-            title: 'Call #3: UGC Degree Validity & Govt Exams (Tamil/Tanglish)',
+            title: 'NIAT Case #3: UGC Degree Validity & Govt Exams (Tamil/Tanglish)',
             objectionCategory: 'degree_validity',
             duration: '01m 00s',
             sizeKb: 886,
+            format: 'wav',
+            isRealRecording: false,
             downloadUrl: '/samples/sample_call_ugc_validity.wav',
             description: 'Coimbatore parent verifying whether the B.Tech degree is valid for TNPSC, UPSC, GATE, and US MS.'
         }
@@ -1099,6 +1296,21 @@ app.post('/api/telegram/send-test', async (req, res) => {
     }
     const result = await telegramBot.sendMessage(chatId, message);
     res.json({ success: !!result, result });
+});
+
+// Broadcast AI-Generated Script directly to Sales Reps on Telegram
+app.post('/api/telegram/broadcast-script', async (req, res) => {
+    try {
+        const scriptData = req.body;
+        if (!scriptData || (!scriptData.verbatimClosingScript && !scriptData.closingScript)) {
+            return res.status(400).json({ success: false, error: 'Valid closing script data is required.' });
+        }
+        const result = await telegramBot.broadcastSalesScript(scriptData);
+        res.json(result);
+    } catch (err) {
+        console.error('[TELEGRAM BROADCAST ERR]', err);
+        res.status(500).json({ success: false, error: err.message });
+    }
 });
 
 // Wire Telegram Bot Callbacks
